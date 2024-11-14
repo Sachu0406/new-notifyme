@@ -25,7 +25,8 @@ function App() {
 
   return (
     <div >
-      <Header />
+      saxhin
+      {/* <Header /> */}
       {/* <RouterProvider router={router} /> */}
       footer
     </div>
