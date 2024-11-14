@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import '../assets/Header.scss';
 import logo from '../../public/vite.svg'; // Adjust path to your logo file
-import { useNavigate } from 'react-router-dom';
+
 
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  
   
   const toggleMenu = () => {
-    //setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <header className="header">
-      <span className="brand" onClick={()=>navigate("/")} title='Home'>
+      <span className="brand" title='Home'>
         <img src={logo} alt="Logo" className="logo" />
         NotifyMe
       </span>

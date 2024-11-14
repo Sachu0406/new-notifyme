@@ -1,0 +1,65 @@
+@import './variables.scss';
+
+.footer {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: $background-default;
+  color: $primary-text;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $secondary-light;
+  font-size: 0.875rem;
+  
+  .footer-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+      color: $text-primary;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $info-light;
+      }
+    }
+  }
+
+  .social-media {
+    display: flex;
+    gap: 0.5rem;
+    
+    .icon {
+      width: 20px;
+      height: 20px;
+      background-color: $primary-color;
+      mask: url('/path-to-your-icons.svg') no-repeat center / contain; // Replace with actual icon paths
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $info-light;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+
+    .footer-section {
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .social-media {
+      gap: 0.5rem;
+    }
+  }
+}

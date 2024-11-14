@@ -2,11 +2,24 @@
 import {
   createBrowserRouter,
   RouterProvider,
+  useLocation,
 } from "react-router-dom";
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import { AuthProvider } from "./AuthContext";
+import Layout from "./Components/Layout";
+import { useLoader } from "./Components/Shared/UseLoader";
+
+function useShouldShowLayout() {
+  const location = useLocation();
+  const pathsWithoutLayout = ["/Login", "/Register"];
+  return !pathsWithoutLayout.includes(location.pathname);
+}
 
 function App() {
+  const shouldShowLayout = useShouldShowLayout();
+  const loading = useLoader();
+
   // const router = createBrowserRouter([
   //   {
   //     path: "/",
@@ -24,12 +37,10 @@ function App() {
 
 
   return (
-    <div >
-      saxhin
-      {/* <Header /> */}
-      {/* <RouterProvider router={router} /> */}
-      footer
-    </div>
+    <AuthProvider>
+      {loading && <Loader />}
+      {shouldShowLayout ? <Layout>{publicRoutes}</Layout> : publicRoutes}
+    </AuthProvider>
   )
 }
 
