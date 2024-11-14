@@ -1,0 +1,139 @@
+// Primary colors
+$primary-color: #007bff;
+$primary-light: #66b2ff;
+$primary-dark: #0056b3;
+$primary-text: #ffffff;
+
+// Secondary colors
+$secondary-color: #6c757d;
+$secondary-light: #a1a9b1;
+$secondary-dark: #494e52;
+$secondary-text: #ffffff;
+
+// Success colors
+$success-color: #28a745;
+$success-light: #71d48e;
+$success-mid: #68e1ecf8;
+$success-dark: #1c7430;
+$success-text: #ffffff;
+
+// Warning colors
+$warning-color: #ffc107;
+$warning-light: #ffd966;
+$warning-dark: #cc9a06;
+$warning-text: #000000;
+
+// Danger colors
+$danger-color: #dc3545;
+$danger-light: #e66775;
+$danger-dark: #a71d2a;
+$danger-text: #ffffff;
+
+// Info colors
+$info-color: #17a2b8;
+$info-light: #5ecadb;
+$info-dark: #10707d;
+$info-text: #ffffff;
+
+// Light and dark background colors
+$light-background: #f8f9fa;
+$light-text: #212529;
+$dark-background: #343a40;
+$dark-text: #ffffff;
+
+// Grayscale colors
+$white: #ffffff;
+$black: #000000;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Text colors
+$text-primary: #212529;
+$text-secondary: #6c757d;
+$text-muted: #6c757d;
+$text-light: #f8f9fa;
+$text-inverse: #ffffff;
+
+// Background colors
+$background-default: #ffffff;
+$background-muted: #f8f9fa;
+$background-dark: #343a40;
+$background-light: #f8f9fa;
+$background-transparent: transparent;
+
+// Border colors
+$border-color: #dee2e6;
+$border-color-light: #e9ecef;
+$border-color-dark: #343a40;
+
+// Link colors
+$link-color: $primary-color;
+$link-hover-color: darken($primary-color, 10%);
+$link-visited-color: $primary-dark;
+
+// Shadows and overlays
+$shadow-light: rgba(0, 0, 0, 0.1);
+$shadow-medium: rgba(0, 0, 0, 0.25);
+$shadow-dark: rgba(0, 0, 0, 0.5);
+$overlay-dark: rgba(0, 0, 0, 0.7);
+$overlay-light: rgba(255, 255, 255, 0.7);
+
+// Miscellaneous colors
+$focus-color: #80bdff;
+$hover-color: #f1f1f1;
+$disabled-background: #e9ecef;
+$disabled-text: #6c757d;
+
+// Transparency
+$transparent: transparent;
+
+// Breakpoints
+$breakpoint-xs: 0;          // Extra small devices (portrait phones)
+$breakpoint-sm: 576px;      // Small devices (landscape phones)
+$breakpoint-md: 768px;      // Medium devices (tablets)
+$breakpoint-lg: 992px;      // Large devices (desktops)
+$breakpoint-xl: 1200px;     // Extra large devices (large desktops)
+$breakpoint-xxl: 1400px;    // Extra extra large devices (larger desktops)
+
+// Media query mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$breakpoint-sm - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-md - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) and (max-width: #{$breakpoint-lg - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) and (max-width: #{$breakpoint-xl - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) and (max-width: #{$breakpoint-xxl - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == xxl {
+    @media (min-width: $breakpoint-xxl) {
+      @content;
+    }
+  }
+}
+
+// Usage example:
+// .example {
+//   @include respond-to(md) {
+//     font-size: 1.2rem;
+//   }
+// }
