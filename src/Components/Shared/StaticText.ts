@@ -1,5 +1,5 @@
 export const TransFormString = {
-  appName: "NOTIFY ME",
+  appName: "NotifyMe",
   newNotification: "New Notifications",
   apply: "Apply",
   copyRight: "CopyRight",

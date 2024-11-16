@@ -1,13 +1,22 @@
 import React, { useCallback, useEffect, useState } from "react";
-import classes from "../../assets/Modules/HomePage.module.scss";
-import AutoScrollList from "../Shared/AutoScrollList";
 import { TransFormString } from "../Shared/StaticText";
 import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
+import PageTitle from "../Shared/PageTitle";
+import { Carousel } from "react-bootstrap";
+
+
+interface CarouselItem {
+  id: number;
+  title: string;
+  image: string;
+}
+
 const Home = () => {
   const [searchParams] = useSearchParams();
+  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
   const state = searchParams.get("state") || 0;
   const [showDialogue] = useState<boolean>(state ? false : true);
   const { stateList, getAllStates } = useAllDataStore();
@@ -18,11 +27,6 @@ const Home = () => {
     stateName: "",
     stateId: 0,
   });
-  // useEffect(() => {
-  //   if (stateList?.length === 0 && +state !== 0) {
-  //     getAllStates();
-  //   }
-  // }, []);
   const getStates = useCallback(() => {
     if (stateList?.length === 0 && +state !== 0) {
       getAllStates();
@@ -32,140 +36,51 @@ const Home = () => {
   useEffect(() => {
     if (stateList?.length > 0 && +state !== 0) {
       const matchedState: any = stateList?.find(
-        (obj) => obj.stateId === +state
+        (obj: any) => obj.stateId === +state
       );
       setCurrentState(matchedState);
     }
     getStates();
   }, [stateList, state]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://dummyjson.com/products?limit=5');
+        const data = await response.json();
+        const items = data.products.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          image: item.images[0], // Assuming the first image for each product
+        }));
+        setCarouselItems(items);
+      } catch (error) {
+        console.error('Error fetching carousel data:', error);
+      }
+    };
 
-  const items = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    // "Item 6",
-    // "Item 7",
-    // "Item 8",
-    // "Item 9",
-    // "Item 10",
-    // "Item 11",
-    // "Item 12",
-  ];
+    fetchData();
+  }, []);
+
 
   return (
     <>
-      <div className="container-fluid mt-3" key={stateList.length}>
-        <div className="row row-cols-1 row-cols-md-3 g-3">
-          <div className="col-md-4">
-            <div className="card h-100 shadow bg-light">
-              <div className="card-body">
-                <h5 className="card-title">{TransFormString.quickLinksJobs}</h5>
-                <p className="card-text">
-                  <AutoScrollList items={items} />
-                </p>
-              </div>
-              {/* <div className="card-footer">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </div> */}
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card h-100 shadow bg-light d-flex justify-content-between">
-              <div className="card-body">
-                <h5 className="card-title">{TransFormString.notifications}</h5>
-                <p className="card-text">
-                  <div className="card">
-                    <div className={`card-body ${classes.homepage}`}>
-                      <h5 className="card-title">{TransFormString.jobs}</h5>
-                      <h6 className="card-subtitle mb-2 text-muted">
-                        {TransFormString.subTitleJobs}
-                      </h6>
-                      <p className="card-text">
-                        {TransFormString.homeCardText}
-                      </p>
-                      <a
-                        href={`/jobs?state=${currentState.stateId}`}
-                        className="card-link"
-                      >
-                        {currentState.stateName} State
-                      </a>
-                      <a href={`/jobs?state=0`} className="card-link">
-                        {TransFormString.allOverIndia}
-                      </a>
-                    </div>
-                  </div>
-                </p>
-                <p>
-                  <div className="card">
-                    <div className={`card-body ${classes.homepage}`}>
-                      <h5 className="card-title">
-                        {TransFormString.admissions}
-                      </h5>
-                      <h6 className="card-subtitle mb-2 text-muted">
-                        {TransFormString.subTitleAdmissions}
-                      </h6>
-                      <p className="card-text">
-                        {TransFormString.homeCardText}
-                      </p>
-                      <a
-                        href={`/admissions?state=${currentState.stateId}`}
-                        className="card-link"
-                      >
-                        {currentState.stateName} State
-                      </a>
-                      <a href={"/admissions?state=0"} className="card-link">
-                        {TransFormString.allOverIndia}
-                      </a>
-                    </div>
-                  </div>
-                </p>
-                {/* <p>
-                  <div className="card">
-                    <div className={`card-body ${classes.homepage}`}>
-                      <h5 className="card-title">{TransFormString.others}</h5>
-                      <h6 className="card-subtitle mb-2 text-muted">
-                        {TransFormString.subTitleOthers}
-                      </h6>
-                      <p className="card-text">
-                        {TransFormString.homeCardText}
-                      </p>
-                      <a
-                        href={`/others?state=${currentState.stateId}`}
-                        className="card-link"
-                      >
-                        {currentState.stateName} State
-                      </a>
-                      <a href={`/others/state=0`} className="card-link">
-                        {TransFormString.allOverIndia}
-                      </a>
-                    </div>
-                  </div>
-                </p> */}
-              </div>
-              {/* <div className="card-footer">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </div> */}
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="card h-100 shadow bg-light">
-              <div className="card-body">
-                <h5 className="card-title">
-                  {TransFormString.quickLinksAdmission}
-                </h5>
-                <p className="card-text">
-                  <AutoScrollList items={items} />
-                </p>
-              </div>
-              {/* <div className="card-footer">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </div> */}
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <PageTitle data={"Sachin"} />
+      <Carousel>
+        {carouselItems.map((item) => (
+          <Carousel.Item key={item.id}>
+            <img
+              className="d-block w-100"
+              src={item.image}
+              alt={item.title}
+              style={{ maxHeight: '500px', objectFit: 'cover' }}
+            />
+            <Carousel.Caption>
+              <h3>{item.title}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
+      </Carousel>
       {showDialogue && <SelectStateModal />}
     </>
   );

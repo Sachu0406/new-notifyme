@@ -1,0 +1,14 @@
+@import './assets/variables.scss';
+
+
+//these are main global theme provider
+
+.light-theme {
+    background-color: $background-muted;
+    color: $text-primary;
+  }
+  
+  .dark-theme {
+    background-color: $background-dark;
+    color: $primary-text;
+  }

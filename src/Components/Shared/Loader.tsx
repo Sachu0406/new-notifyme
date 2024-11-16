@@ -1,11 +1,13 @@
 import React from "react";
-import "../../assets/CSS/common.css";
+import "../../assets/Loader.scss";
+import logoPath from "/public/TradeLogo3.png";
+
 const Loader = () => {
   return (
     <div className="spinner-overlay">
       <div style={{ textAlign: "center" }}>
         <img
-          src={`${process.env.PUBLIC_URL}/Images/TradeLogo3.png`}
+          src={logoPath}
           alt="Loading..."
         />
         <div className="loading-text">Hang on...❤️</div>
