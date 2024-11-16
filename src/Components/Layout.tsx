@@ -5,20 +5,20 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import whatsAppLogo from "../assets/Images/whatsApp.jpeg";
 import { TransFormString } from "./Shared/StaticText";
-import { useTheme } from "../ThemeContext";
+//import { useTheme } from "../ThemeContext";
 import useIsSmallDevice from "./Shared/IsMobileDevice";
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { isDarkMode, toggleTheme } = useTheme();
+  //const { isDarkMode, toggleTheme } = useTheme();
   const isSmallDevice = useIsSmallDevice();
   return (
     <>
       <Header />
       <div className="container" >
-        {isSmallDevice &&
+        {/* {isSmallDevice &&
           <div className="form-check form-switch" style={{ margin: "5px", position: "fixed", right: "1px" }}>
             <input
               className="form-check-input"
@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               {isDarkMode ? "Light" : "Dark"} Mode
             </label>
           </div>
-        }
+        } */}
         {children}
       </div>
       <div

@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   background-color: $success-mid;
   color: $primary-text;
   position: relative;
@@ -15,7 +15,7 @@
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-
+    cursor:pointer;
     .logo {
       width: 40px;
       height: auto;
@@ -86,7 +86,8 @@
       position: absolute;
       top: 100%;
       left: 0;
-      width: 100%;
+      width: 70%;
+      height: 100vh;
       background-color: rgba(255, 255, 255, 0.5); // Semi-transparent background
       backdrop-filter: blur(10px); // Blurs the background
       padding: 1rem 0;
@@ -100,7 +101,21 @@
         text-align: center;
       }
     }
+    //backdrop menu semi furnish
+    .menu-backdrop {
+      position: fixed;
+      top: 0;
+      left: 70%; // Start after the menu width
+      width: 30%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3); // Slightly dark overlay for rest of the screen
+      z-index: 10; // Ensure it's below the menu but above other elements
+      display: none;
     
+      &.open {
+        display: block;
+      }
+    }
   }
 
   .menu-icon {

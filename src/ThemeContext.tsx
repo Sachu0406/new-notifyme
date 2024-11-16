@@ -8,12 +8,15 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+      });
     
     useEffect(() => {
         const themeClass = isDarkMode ? "dark-theme" : "light-theme";
         document.body.classList.remove("dark-theme", "light-theme");
         document.body.classList.add(themeClass);
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
       }, [isDarkMode]);
 
       

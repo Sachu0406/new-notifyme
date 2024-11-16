@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { TransFormString } from "../Shared/StaticText";
+import  { useCallback, useEffect, useState } from "react";
+//import { TransFormString } from "../Shared/StaticText";
 import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
@@ -45,12 +45,12 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://dummyjson.com/products?limit=5');
+        const response = await fetch('https://dummyjson.com/products?limit=10');
         const data = await response.json();
         const items = data.products.map((item: any) => ({
           id: item.id,
           title: item.title,
-          image: item.images[0], // Assuming the first image for each product
+          image: item.images[0], 
         }));
         setCarouselItems(items);
       } catch (error) {
@@ -65,7 +65,7 @@ const Home = () => {
   return (
     <>
 
-      <PageTitle data={"Sachin"} />
+      <PageTitle data={"Home Page"} />
       <Carousel>
         {carouselItems.map((item) => (
           <Carousel.Item key={item.id}>
