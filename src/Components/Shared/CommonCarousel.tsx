@@ -1,5 +1,5 @@
 import React from "react";
-import "./CarouselSection.scss";
+import '../../assets/Style/CarouselSection.scss';
 
 interface CarouselItem {
   id: number;

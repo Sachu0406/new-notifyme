@@ -4,6 +4,7 @@ import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
+import CarouselSection from "../Shared/CommonCarousel";
 
 interface CarouselItem {
   id: number;
@@ -78,6 +79,12 @@ const Home = () => {
           </Carousel.Item>
         ))}
       </Carousel> */}
+      <CarouselSection
+        title="Notifications"
+        carouselItems={carouselItems}
+        itemHeight="250px"
+        itemWidth="400px"
+      />
       {showDialogue && <SelectStateModal />}
     </>
   );

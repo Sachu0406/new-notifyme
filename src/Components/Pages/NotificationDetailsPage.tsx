@@ -40,7 +40,6 @@ const NotificationDetailsPage = () => {
       //   ? new Date(listItem?.hallTicketDate).toLocaleDateString("en-GB")
       //   : null,
     }));
-    console.log("Sachin next", data);
     return res;
   };
   const fetchData = async () => {
