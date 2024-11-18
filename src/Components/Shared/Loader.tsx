@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/Loader.scss";
+import "../../assets/Style/Loader.scss";
 import logoPath from "/public/TradeLogo3.png";
 
 const Loader = () => {

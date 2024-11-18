@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../assets/Header.scss';
+import '../assets/Style/Header.scss';
 import logo from '/public/TradeLogo4.png';
 import { AiOutlineClose } from 'react-icons/ai';
 import { TransFormString } from './Shared/StaticText';

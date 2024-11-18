@@ -1,12 +1,9 @@
-import  { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 //import { TransFormString } from "../Shared/StaticText";
 import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
-import PageTitle from "../Shared/PageTitle";
-import { Carousel } from "react-bootstrap";
-
 
 interface CarouselItem {
   id: number;
@@ -50,7 +47,7 @@ const Home = () => {
         const items = data.products.map((item: any) => ({
           id: item.id,
           title: item.title,
-          image: item.images[0], 
+          image: item.images[0],
         }));
         setCarouselItems(items);
       } catch (error) {
@@ -61,11 +58,11 @@ const Home = () => {
     fetchData();
   }, []);
 
+  
 
   return (
     <>
-
-      <PageTitle data={"Home Page"} />
+      {/* // i need heading like notifications then separator
       <Carousel>
         {carouselItems.map((item) => (
           <Carousel.Item key={item.id}>
@@ -80,7 +77,7 @@ const Home = () => {
             </Carousel.Caption>
           </Carousel.Item>
         ))}
-      </Carousel>
+      </Carousel> */}
       {showDialogue && <SelectStateModal />}
     </>
   );
