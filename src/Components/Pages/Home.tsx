@@ -1,16 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-//import { TransFormString } from "../Shared/StaticText";
 import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
 import CarouselSection from "../Shared/CommonCarousel";
-
-interface CarouselItem {
-  id: number;
-  title: string;
-  image: string;
-}
+import { CarouselItem } from "../Shared/staticData";
 
 const Home = () => {
   const [searchParams] = useSearchParams();
@@ -41,35 +35,32 @@ const Home = () => {
     }
     getStates();
   }, [stateList, state]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://dummyjson.com/products?limit=10');
+      const data = await response.json();
+      const items = data.products.map((item: any) => ({
+        id: item.id,
+        title: item.title,
+        image: item.images[0],
+      }));
+      setCarouselItems(items);
+      setPageRefresh(Math.random());
+    } catch (error) {
+      console.error('Error fetching carousel data:', error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('https://dummyjson.com/products?limit=10');
-        const data = await response.json();
-        const items = data.products.map((item: any) => ({
-          id: item.id,
-          title: item.title,
-          image: item.images[0],
-        }));
-        setCarouselItems(items);
-        setPageRefresh(Math.random());
-      } catch (error) {
-        console.error('Error fetching carousel data:', error);
-      }
-    };
-
-    fetchData();
+    if (state) fetchData();
   }, []);
 
 
 
   return (
-    <div key={pageRefresh}>
+    <div key={pageRefresh} className="h-100">
       <CarouselSection
         title="Notifications"
         carouselItems={carouselItems}
-        itemHeight="250px"
-        itemWidth="400px"
       />
       {showDialogue && <SelectStateModal />}
     </div>

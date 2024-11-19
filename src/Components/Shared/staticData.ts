@@ -15,6 +15,12 @@ export const onlineOfflineMode = [
     value: "Both",
   },
 ];
+export interface CarouselItem {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+};
 
 export const examLevel = [
   {

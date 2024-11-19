@@ -5,6 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { TransFormString } from './Shared/StaticText';
 import { useTheme } from '../ThemeContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { dayMode } from '../assets/Images/dark-mode-night.svg';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Header: React.FC = () => {
         <a href="#admissions" >Admissions</a>
         <a href="#entrances" >Entrances</a>
         <a href="#contact" >Contact</a>
-        {isMenuOpen && <a href="javascript:void(0)" onClick={toggleTheme}><i className={isDarkMode ?"bi bi-brightness-high": "bi bi-brightness-low"} onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a> }
+        {isMenuOpen && <a href="javascript:void(0)" onClick={toggleTheme}><i onClick={toggleMenu}><img src={dayMode} alt='mode'>{dayMode}{isDarkMode ? "Light" : "Dark"} Mode</img></i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
         {!isMenuOpen ? <>
