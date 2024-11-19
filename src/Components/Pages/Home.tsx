@@ -14,6 +14,7 @@ interface CarouselItem {
 
 const Home = () => {
   const [searchParams] = useSearchParams();
+  const [pageRefresh, setPageRefresh] = useState<number>(Math.random());
   const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
   const state = searchParams.get("state") || 0;
   const [showDialogue] = useState<boolean>(state ? false : true);
@@ -51,6 +52,7 @@ const Home = () => {
           image: item.images[0],
         }));
         setCarouselItems(items);
+        setPageRefresh(Math.random());
       } catch (error) {
         console.error('Error fetching carousel data:', error);
       }
@@ -59,26 +61,10 @@ const Home = () => {
     fetchData();
   }, []);
 
-  
+
 
   return (
-    <>
-      {/* // i need heading like notifications then separator
-      <Carousel>
-        {carouselItems.map((item) => (
-          <Carousel.Item key={item.id}>
-            <img
-              className="d-block w-100"
-              src={item.image}
-              alt={item.title}
-              style={{ maxHeight: '500px', objectFit: 'cover' }}
-            />
-            <Carousel.Caption>
-              <h3>{item.title}</h3>
-            </Carousel.Caption>
-          </Carousel.Item>
-        ))}
-      </Carousel> */}
+    <div key={pageRefresh}>
       <CarouselSection
         title="Notifications"
         carouselItems={carouselItems}
@@ -86,7 +72,7 @@ const Home = () => {
         itemWidth="400px"
       />
       {showDialogue && <SelectStateModal />}
-    </>
+    </div>
   );
 };
 

@@ -24,11 +24,11 @@ const Header: React.FC = () => {
         {TransFormString.appName}
       </span>
       <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        <a href="/Home" onClick={toggleMenu}>Change State</a>
-        <a href="#jobs" onClick={toggleMenu}>Jobs</a>
-        <a href="#admissions" onClick={toggleMenu}>Admissions</a>
-        <a href="#entrances" onClick={toggleMenu}>Entrances</a>
-        <a href="#contact" onClick={toggleMenu}>Contact</a>
+        <a href="/Home" >Change State</a>
+        <a href="#jobs" >Jobs</a>
+        <a href="#admissions" >Admissions</a>
+        <a href="#entrances" >Entrances</a>
+        <a href="#contact" >Contact</a>
         {isMenuOpen && <a href="javascript:void(0)" onClick={toggleTheme}><i className={isDarkMode ?"bi bi-brightness-high": "bi bi-brightness-low"} onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a> }
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
