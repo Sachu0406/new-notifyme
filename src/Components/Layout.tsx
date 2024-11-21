@@ -4,8 +4,8 @@ import Footer from "./Footer";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import whatsAppLogo from "../assets/Images/whatsapp.svg";
+import classes from "../assets/Modules/Layout.module.scss";
 import { TransFormString } from "./Shared/StaticText";
-//import { useTheme } from "../ThemeContext";
 import useIsSmallDevice from "./Shared/IsMobileDevice";
 interface LayoutProps {
   children: ReactNode;
@@ -17,8 +17,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="container">
-      </div>
+      <div className={classes.container__pages}>{children}</div>
         {children}
       <div
         className="fixed-bottom right-100 p-3"
