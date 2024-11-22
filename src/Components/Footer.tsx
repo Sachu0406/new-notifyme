@@ -12,19 +12,19 @@ const Footer: React.FC = () => {
 
       <div className="footer-section social-media">
         <a href="https://www.facebook.com/login/" target="/">
-          <i className="bi bi-facebook me-2 text-primary fs-4"></i>
-          FaceBook
+          <i className="bi bi-facebook me-2 text-primary fs-6">FaceBook</i>
+          
         </a>
         <a
           href="https://www.instagram.com/accounts/login/"
           target="/"
         >
-          <i className="bi bi-instagram me-2 text-danger fs-4"></i>
-          Instagram
+          <i className="bi bi-instagram me-2 text-danger fs-6">Instagram</i>
+          
         </a>
         <a href="https://x.com/i/flow/login" target="/">
-          <i className="bi bi-twitter me-2 text-primary fs-4"></i>
-          Twitter &nbsp; &nbsp;
+          <i className="bi bi-twitter me-2 text-primary fs-6">Twitter</i>
+           &nbsp; &nbsp;
         </a>
       </div>
 

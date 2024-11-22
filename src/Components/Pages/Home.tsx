@@ -3,7 +3,7 @@ import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
-import CarouselSection from "../Shared/CommonCarousel";
+import SwiperSection from "../Shared/CommonSwiper";
 import { CarouselItem } from "../Shared/staticData";
 
 const Home = () => {
@@ -56,18 +56,18 @@ const Home = () => {
 
   return (
     <div key={pageRefresh}>
-      <CarouselSection
+      {carouselItems?.length > 0 && <SwiperSection
         title="New Notifications"
         carouselItems={carouselItems}
-      />
-      <CarouselSection
+      />}
+      {carouselItems?.length > 0 && <SwiperSection
         title="All Notifications"
         carouselItems={carouselItems}
-      />
-      <CarouselSection
+      />}
+      {carouselItems?.length > 0 && <SwiperSection
         title="Trending Notifications"
         carouselItems={carouselItems}
-      />
+      />}
       {showDialogue && <SelectStateModal />}
     </div>
   );

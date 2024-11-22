@@ -30,7 +30,7 @@ const Header: React.FC = () => {
         <a href="#admissions" >Admissions</a>
         <a href="#entrances" >Entrances</a>
         <a href="#contact" >Contact</a>
-        {isMenuOpen && <a href="javascript:void(0)" onClick={toggleTheme}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
+        {isMenuOpen && <a href="javascript:void(0)" onClick={()=>{toggleTheme(), toggleMenu()}}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
         {!isMenuOpen ? <>

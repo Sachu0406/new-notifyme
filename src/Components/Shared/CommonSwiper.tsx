@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/Style/CarouselSection.scss";
+import "../../assets/Style/SwiperStyle.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle"; //ref link https://swiperjs.com/react
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
@@ -12,7 +12,7 @@ interface CarouselSectionProps {
   viewAllLink?: string;
 }
 
-const CarouselSection: React.FC<CarouselSectionProps> = ({
+const SwiperSection: React.FC<CarouselSectionProps> = ({
   title,
   carouselItems,
   viewAllLink = "#view-all",
@@ -68,4 +68,4 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
   );
 };
 
-export default CarouselSection;
+export default SwiperSection;

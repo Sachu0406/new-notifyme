@@ -9,13 +9,13 @@
     align-items: center;
 
     span {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       font-weight: bold;
     }
 
     .view-all-link {
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: $primary-light;
 
       &:hover {
@@ -39,10 +39,10 @@
   text-align: center;
   background: $carousel-bg;
   border-radius: 1rem;
-  //background-image: url('../Images/TradeLogo2.svg'); // Add your background image
+  background-image: url('../Images/swiperBg.jpg'); // Add your background image
   background-size: cover; // Ensure the image covers the entire container
   background-position: center;
-
+  margin-bottom:1rem;
   img {
     cursor: pointer;
     width: 100%;

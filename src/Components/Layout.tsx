@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,8 @@ import whatsAppLogo from "../assets/Images/whatsapp.svg";
 import classes from "../assets/Module/Layout.module.scss";
 import { TransFormString } from "./Shared/StaticText";
 import useIsSmallDevice from "./Shared/IsMobileDevice";
+import SwiperSection from "./Shared/CommonSwiper";
+import { CarouselItem } from "./Shared/staticData";
 interface LayoutProps {
   children: ReactNode;
 }
@@ -14,13 +16,19 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   //const { isDarkMode, toggleTheme } = useTheme();
   const isSmallDevice = useIsSmallDevice();
+  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
   return (
     <>
       <Header />
       <div className={classes.container__pages}>
         {children}
-        i need to add QuickLinks here
+        <div className="">
+          {carouselItems?.length > 0 && <SwiperSection
+            title="Trending Notifications"
+            carouselItems={carouselItems}
+          />}
         </div>
+      </div>
       <div
         className="fixed-bottom right-100 p-3"
         style={{ zIndex: 6, left: "initial", marginBottom: isSmallDevice ? "35%" : "4%" }}

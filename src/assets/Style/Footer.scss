@@ -14,20 +14,27 @@
   border-top: 1px solid $secondary-light;
   font-size: 0.875rem;
   border-radius: 0.5rem 0.5rem 0 0;
-  z-index:5;
+  z-index: 5;
+
   .footer-section {
     display: flex;
     align-items: center;
     gap: 1rem;
-    color:$text-light;
+    color: $text-light;
+
     a {
       color: inherit;
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s;
 
-      &:hover {
-        color: $info-light;
+      i {
+        font-weight: 200;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $info-light;
+        }
       }
     }
   }
@@ -35,7 +42,7 @@
   .social-media {
     display: flex;
     gap: 0.5rem;
-    
+
     .icon {
       width: 20px;
       height: 20px;
