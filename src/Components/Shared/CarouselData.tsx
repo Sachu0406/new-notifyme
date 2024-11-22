@@ -4,7 +4,7 @@ import { Carousel } from "react-bootstrap";
 const CarouselData = (props: any) => {
   const { data } = props;
   return (
-    <div>
+    <>
       <Carousel>
         {data.map((listItem: any, index: number) => (
           <Carousel.Item key={index}>
@@ -25,7 +25,7 @@ const CarouselData = (props: any) => {
           </Carousel.Item>
         ))}
       </Carousel>
-    </div>
+    </>
   );
 };
 

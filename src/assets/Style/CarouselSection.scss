@@ -29,46 +29,35 @@
     margin-bottom: 1rem;
   }
 
-  // .swiper-slide {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   cursor: pointer;
+}
 
-  //   .card {
-  //     width: 300px;
-  //     height: 400px;
-  //     border: 1px solid #ddd;
-  //     border-radius: 8px;
-  //     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  //     overflow: hidden;
-  //     display: flex;
-  //     flex-direction: column;
+.carousel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:$carousel-bg;
+  border-radius: 1rem;
+  background-image: url('../Images/TradeLogo1.png'); // Add your background image
+  background-size: cover; // Ensure the image covers the entire container
+  background-position: center;
 
-  //     &:hover {
-  //       transform: scale(1.05);
-  //       transition: transform 0.3s ease;
-  //     }
+  img {
+    width: 100%;
+    max-width: 150px; // Ensure all images have equal width
+    height: 150px; // Fixed height for uniformity
+    object-fit: cover; // Ensure images fill the space
+    border-radius: 8px; // Optional styling
+    margin-bottom: 8px;
+  }
 
-  //     .card-header {
-  //       font-size: 1.25rem;
-  //       font-weight: bold;
-  //       padding: 0.5rem;
-  //       text-align: center;
-  //       border-bottom: 1px solid #ddd;
-  //     }
+  h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
 
-  //     .card-image {
-  //       flex-grow: 1;
-  //       width: 100%;
-  //       object-fit: cover; // Ensures equal adjustment of all images
-  //     }
-
-  //     .card-description {
-  //       padding: 0.5rem;
-  //       font-size: 1rem;
-  //       text-align: center;
-  //     }
-  //   }
-  // }
+  p {
+    font-size: 0.875rem;
+  }
 }

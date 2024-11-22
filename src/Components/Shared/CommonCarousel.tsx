@@ -36,8 +36,9 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
       </div>
       <Swiper
         spaceBetween={16}
-        //slidesPerView={3}
+        slidesPerView={"auto"}
         grabCursor={true}
+        centeredSlides={true}
         autoplay={{ delay: 3000, disableOnInteraction: false }} // Enable autoplay
         loop={true} // Enable infinite loop
         breakpoints={{
@@ -51,12 +52,15 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
         {carouselItems.map((item) => (
           <SwiperSlide
             key={item.id}
-            onClick={() => handleCardClick(item.id)} 
+            onClick={() => handleCardClick(item.id)}
           >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-100" />
+            <div className="carousel-item">
+              <h2>Ts Tet</h2>
+              <img src={item.image} alt={item.title} className="carousel-image" />
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+
           </SwiperSlide>
         ))}
       </Swiper>
