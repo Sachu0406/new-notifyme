@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import whatsAppLogo from "../assets/Images/whatsapp.svg";
-import classes from "../assets/Modules/Layout.module.scss";
+import classes from "../assets/Module/Layout.module.scss";
 import { TransFormString } from "./Shared/StaticText";
 import useIsSmallDevice from "./Shared/IsMobileDevice";
 interface LayoutProps {

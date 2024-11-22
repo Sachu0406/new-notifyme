@@ -24,34 +24,34 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
   };
 
   return (
-    <><div className="carousel-section">
-      <div className="section-heading">
-        <span>{title}</span>
-        <a href={viewAllLink} className="view-all-link">
-          View All
-        </a>
+    <>
+      <div className="carousel-section">
+        <div className="section-heading">
+          <span>{title}</span>
+          <a href={viewAllLink} className="view-all-link">
+            View All
+          </a>
+        </div>
+        <div className="separator" />
       </div>
-      <div className="separator" />
-    </div>
-    <Swiper
-      spaceBetween={16}
-      //slidesPerView={3}
-      grabCursor={true}
-      autoplay={{ delay: 3000, disableOnInteraction: false }} // Enable autoplay
-      loop={true} // Enable infinite loop
-      breakpoints={{
-        480: { slidesPerView: 1 },
-        768: { slidesPerView: 3 },
-        1024: { slidesPerView: 5 },
-      }}
-      modules={[Autoplay, Pagination, Navigation]} // Add the Autoplay module
-    >
-      
+      <Swiper
+        spaceBetween={16}
+        //slidesPerView={3}
+        grabCursor={true}
+        autoplay={{ delay: 3000, disableOnInteraction: false }} // Enable autoplay
+        loop={true} // Enable infinite loop
+        breakpoints={{
+          480: { slidesPerView: 1 },
+          768: { slidesPerView: 3 },
+          1024: { slidesPerView: 5 },
+        }}
+        modules={[Autoplay, Pagination, Navigation]} // Add the Autoplay module
+      >
+
         {carouselItems.map((item) => (
           <SwiperSlide
             key={item.id}
-            //className="swiper-slide"
-            onClick={() => handleCardClick(item.id)} // Navigate on click
+            onClick={() => handleCardClick(item.id)} 
           >
             <img
               src={item.image}
@@ -59,7 +59,8 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({
               className="w-100" />
           </SwiperSlide>
         ))}
-      </Swiper></>
+      </Swiper>
+    </>
   );
 };
 

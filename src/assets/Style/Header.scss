@@ -7,8 +7,12 @@
   padding: 1rem 1rem;
   background-color: $success-mid;
   color: $primary-text;
-  position: relative;
-  border-radius: 0.5rem;
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  z-index: 5; 
+  border-radius: 0 0 0.5rem 0.5rem;
 
   .brand {
     display: flex;

@@ -54,16 +54,14 @@ const Home = () => {
     if (state) fetchData();
   }, []);
 
-
-
   return (
-    <div key={pageRefresh} className="h-100">
+    <>
       <CarouselSection
-        title="Notifications"
+        title="Notification"
         carouselItems={carouselItems}
       />
       {showDialogue && <SelectStateModal />}
-    </div>
+    </>
   );
 };
 
