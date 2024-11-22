@@ -17,8 +17,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Header />
-      <div className={classes.container__pages}>{children}</div>
+      <div className={classes.container__pages}>
         {children}
+        i need to add QuickLinks here
+        </div>
       <div
         className="fixed-bottom right-100 p-3"
         style={{ zIndex: 6, left: "initial", marginBottom: isSmallDevice ? "35%" : "4%" }}

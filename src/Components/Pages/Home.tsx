@@ -55,13 +55,21 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div key={pageRefresh}>
       <CarouselSection
-        title="Notification"
+        title="New Notifications"
+        carouselItems={carouselItems}
+      />
+      <CarouselSection
+        title="All Notifications"
+        carouselItems={carouselItems}
+      />
+      <CarouselSection
+        title="Trending Notifications"
         carouselItems={carouselItems}
       />
       {showDialogue && <SelectStateModal />}
-    </>
+    </div>
   );
 };
 
