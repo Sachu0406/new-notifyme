@@ -15,6 +15,63 @@ export const onlineOfflineMode = [
     value: "Both",
   },
 ];
+export type GridItem = {
+  id: number;
+  title: string;
+  applicationDate: string;
+  notificationDate: string;
+  officialWebsite: string;
+  applyLink: string;
+  shareLink: string;
+};
+
+export const gridData: GridItem[] = [
+  {
+    id: 1,
+    title: "Job 1",
+    applicationDate: "2024-11-20",
+    notificationDate: "2024-11-15",
+    officialWebsite: "https://example.com/official",
+    applyLink: "https://example.com/apply",
+    shareLink: "https://example.com/share",
+  },
+  {
+    id: 2,
+    title: "Job 2",
+    applicationDate: "2024-12-01",
+    notificationDate: "2024-11-25",
+    officialWebsite: "https://example2.com/official",
+    applyLink: "https://example2.com/apply",
+    shareLink: "https://example2.com/share",
+  },
+  {
+    id: 3,
+    title: "Job 3",
+    applicationDate: "2024-12-01",
+    notificationDate: "2024-11-25",
+    officialWebsite: "https://example2.com/official",
+    applyLink: "https://example2.com/apply",
+    shareLink: "https://example2.com/share",
+  },
+  {
+    id: 5,
+    title: "Job 5",
+    applicationDate: "2024-12-01",
+    notificationDate: "2024-11-25",
+    officialWebsite: "https://example2.com/official",
+    applyLink: "https://example2.com/apply",
+    shareLink: "https://example2.com/share",
+  },
+  {
+    id: 4,
+    title: "Job 4",
+    applicationDate: "2024-12-01",
+    notificationDate: "2024-11-25",
+    officialWebsite: "https://example2.com/official",
+    applyLink: "https://example2.com/apply",
+    shareLink: "https://example2.com/share",
+  },
+];
 export interface CarouselItem {
   id: number;
   title: string;

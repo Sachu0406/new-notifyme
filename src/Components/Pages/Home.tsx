@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
 import SwiperSection from "../Shared/CommonSwiper";
 import { CarouselItem } from "../Shared/staticData";
+import NotificationCards from "./AllNotifications";
 
 const Home = () => {
   const [searchParams] = useSearchParams();
@@ -56,18 +57,19 @@ const Home = () => {
 
   return (
     <div key={pageRefresh}>
-      {carouselItems?.length > 0 && <SwiperSection
+      { <SwiperSection
         title="New Notifications"
         carouselItems={carouselItems}
       />}
-      {carouselItems?.length > 0 && <SwiperSection
+      { <SwiperSection
         title="All Notifications"
         carouselItems={carouselItems}
       />}
-      {carouselItems?.length > 0 && <SwiperSection
+      { <SwiperSection
         title="Trending Notifications"
         carouselItems={carouselItems}
       />}
+      <NotificationCards/>
       {showDialogue && <SelectStateModal />}
     </div>
   );
