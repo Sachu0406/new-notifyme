@@ -63,11 +63,7 @@ const Home = () => {
       />}
       { <SwiperSection
         title="All Notifications"
-        carouselItems={carouselItems}
-      />}
-      { <SwiperSection
-        title="Trending Notifications"
-        carouselItems={carouselItems}
+        carouselItems={[]}
       />}
       <NotificationCards/>
       {showDialogue && <SelectStateModal />}

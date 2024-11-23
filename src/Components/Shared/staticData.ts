@@ -28,7 +28,7 @@ export type GridItem = {
 export const gridData: GridItem[] = [
   {
     id: 1,
-    title: "Job 1",
+    title: "RRB Recruitment 2024",
     applicationDate: "2024-11-20",
     notificationDate: "2024-11-15",
     officialWebsite: "https://example.com/official",
@@ -37,7 +37,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 2,
-    title: "Job 2",
+    title: "Ts TET 2024",
     applicationDate: "2024-12-01",
     notificationDate: "2024-11-25",
     officialWebsite: "https://example2.com/official",
@@ -46,7 +46,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 3,
-    title: "Job 3",
+    title: "TS DSC 2024",
     applicationDate: "2024-12-01",
     notificationDate: "2024-11-25",
     officialWebsite: "https://example2.com/official",
@@ -55,7 +55,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 5,
-    title: "Job 5",
+    title: "SSC GD Constable 2024",
     applicationDate: "2024-12-01",
     notificationDate: "2024-11-25",
     officialWebsite: "https://example2.com/official",
