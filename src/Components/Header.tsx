@@ -25,11 +25,11 @@ const Header: React.FC = () => {
         {TransFormString.appName}
       </span>
       <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        <a href="/Home" >Change State</a>
+        {/* <a href="/Home" >Change State</a>
         <a href="#jobs" >Jobs</a>
         <a href="#admissions" >Admissions</a>
-        <a href="#entrances" >Entrances</a>
-        <a href="#contact" >Contact</a>
+        <a href="#entrances" >Entrances</a> */}
+        <a href="#contact" >Contact us</a>
         {isMenuOpen && <a href="javascript:void(0)" onClick={()=>{toggleTheme(), toggleMenu()}}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
