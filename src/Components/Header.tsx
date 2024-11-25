@@ -5,11 +5,13 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { TransFormString } from './Shared/StaticText';
 import { useTheme } from '../ThemeContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import useIsSmallDevice from './Shared/IsMobileDevice';
 //import { dayMode } from '../assets/Images/dark-mode-night.svg';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const isMobile = useIsSmallDevice();
   const stateId = searchParams.get("state") || 0;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
@@ -25,12 +27,12 @@ const Header: React.FC = () => {
         {TransFormString.appName}
       </span>
       <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        {/* <a href="/Home" >Change State</a>
+        {!isMobile && <a href="javascript:void(0)" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
         <a href="#jobs" >Jobs</a>
         <a href="#admissions" >Admissions</a>
-        <a href="#entrances" >Entrances</a> */}
-        <a href="#contact" >Contact us</a>
-        {isMenuOpen && <a href="javascript:void(0)" onClick={()=>{toggleTheme(), toggleMenu()}}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
+        <a href="#entrances" >Entrances</a>
+        <a href="#contact" >Join Whatsapp Group</a>
+        {isMobile && isMenuOpen && <a href="javascript:void(0)" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
         {!isMenuOpen ? <>

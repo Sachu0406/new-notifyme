@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styles from "../../assets/Module/AllNotifications.module.scss";
-import { useNavigate } from "react-router-dom";
 import ShareButton from "../Shared/CommonShareIcon";
 import { Button } from "react-bootstrap";
-import { FaShareAlt } from "react-icons/fa";
 
 interface dataSection {
   gridData: any
@@ -13,7 +11,6 @@ const NotificationCards: React.FC<dataSection> = ({
   gridData
 }) => {
   const [flippedCardId, setFlippedCardId] = useState<number | null>(null);
-  const navigate = useNavigate();
   const handleFlip = (id: number) => setFlippedCardId(id);
 
   const handleUnflip = () => setFlippedCardId(null);
@@ -58,10 +55,10 @@ const NotificationCards: React.FC<dataSection> = ({
               <p className="fw-semibold">Eligibility: </p>&nbsp;<p className="fw-semibold">{item.eligibility}</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+              <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">500</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Application End Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+              <p className="fw-semibold">Official Website: </p>&nbsp;<p className="fw-semibold"><a href={item?.officialWebsite || "#"} title={"click here to go to Official WebSite"}>Click here</a></p>
             </div>
             <div className="d-flex justify-content-between">
               <Button
@@ -74,11 +71,10 @@ const NotificationCards: React.FC<dataSection> = ({
                 //onClick={handleShare}
                 className="d-flex align-items-center"
               >
-                <FaShareAlt className="me-1" /> Share
+                Apply through us
               </Button>
 
             </div>
-            <button onClick={handleUnflip}></button>
           </div>
         </div>
       ))}

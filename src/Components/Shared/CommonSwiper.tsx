@@ -17,18 +17,13 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
   carouselItems,
   moreInfoText,
 }) => {
-  //const navigate = useNavigate();
-
-  // const handleCardClick = (id: number) => {
-  //   navigate(`/details/${id}`); // Navigate to the details page with the item ID
-  // };
 
   return (
     <>
       <div className="carousel-section">
         <div className="section-heading">
           <span>{title}</span>
-          <a href={"javascript:void(0)"} className="view-all-link" title="See more">
+          <a href={"javascript:void(0)"} className="view-all-link" title="To see more" style={{ cursor: "not-allowed" }}>
             {moreInfoText}
           </a>
         </div>
@@ -52,7 +47,7 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
         {carouselItems.map((item) => (
           <SwiperSlide
             key={item.id}
-            //onClick={() => handleCardClick(item.id)}
+          //onClick={() => handleCardClick(item.id)}
           >
             <div className="carousel-item">
               <h2>Ts Tet</h2>
