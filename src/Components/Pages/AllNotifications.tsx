@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import { useNavigate } from "react-router-dom";
 import ShareButton from "../Shared/CommonShareIcon";
+import { Button } from "react-bootstrap";
+import { FaShareAlt } from "react-icons/fa";
 
 interface dataSection {
   gridData: any
@@ -40,19 +42,40 @@ const NotificationCards: React.FC<dataSection> = ({
             </div>
             <div className="d-flex justify-content-between">
               <ShareButton />
-              <button className="btn btn-primary" onClick={() => handleFlip(item.id)}>More details</button>
+              <Button
+                variant="primary"
+                onClick={() => handleFlip(item.id)}
+                className="d-flex align-items-center">
+                More details<i className="bi bi-three-dots ms-1" /></Button>
             </div>
           </div>
           <div className={styles.back}>
-            <h4>{item.title}</h4>
+            <div>
+              <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
+              <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
+            </div>
             <button onClick={() => navigate(item.officialWebsite)}>
               Official Website
             </button>
             <a href={item.applyLink} target="_blank" rel="noopener noreferrer">
               Apply Here
             </a>
-            <ShareButton />
-            <button onClick={handleUnflip}>Close</button>
+            <div className="d-flex justify-content-between">
+              <Button
+                variant="light"
+                onClick={handleUnflip}
+                className="d-flex align-items-center">
+                Close</Button>
+              <Button
+                variant="success"
+                //onClick={handleShare}
+                className="d-flex align-items-center"
+              >
+                <FaShareAlt className="me-1" /> Share
+              </Button>
+
+            </div>
+            <button onClick={handleUnflip}></button>
           </div>
         </div>
       ))}
