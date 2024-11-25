@@ -8,13 +8,15 @@ import { CarouselItem } from "./staticData";
 interface CarouselSectionProps {
   title: string;
   carouselItems: CarouselItem[];
-  viewAllLink?: string;
+  moreInfoText?: string;
+  moreInfoTextLink?: string;
 }
 
 const SwiperSection: React.FC<CarouselSectionProps> = ({
   title,
   carouselItems,
-  //viewAllLink = "#view-all",
+  moreInfoText,
+  moreInfoTextLink
 }) => {
   //const navigate = useNavigate();
 
@@ -27,9 +29,9 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
       <div className="carousel-section">
         <div className="section-heading">
           <span>{title}</span>
-          {/* <a href={viewAllLink} className="view-all-link">
-            View All
-          </a> */}
+          <a href={"javascript:void(0)"} className="view-all-link" title="See more">
+            {moreInfoText}
+          </a>
         </div>
         <div className="separator" />
       </div>
