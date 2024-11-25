@@ -54,12 +54,15 @@ const NotificationCards: React.FC<dataSection> = ({
               <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
               <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
             </div>
-            <button onClick={() => navigate(item.officialWebsite)}>
-              Official Website
-            </button>
-            <a href={item.applyLink} target="_blank" rel="noopener noreferrer">
-              Apply Here
-            </a>
+            <div className="d-flex justify-content-between">
+              <p className="fw-semibold">Eligibility: </p>&nbsp;<p className="fw-semibold">{item.eligibility}</p>
+            </div>
+            <div className="d-flex justify-content-between">
+              <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+            </div>
+            <div className="d-flex justify-content-between">
+              <p className="fw-semibold">Application End Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+            </div>
             <div className="d-flex justify-content-between">
               <Button
                 variant="light"
