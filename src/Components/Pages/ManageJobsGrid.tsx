@@ -3,7 +3,6 @@ import CommonDataGrid from "../Shared/CommonDataGrid";
 import { toast } from "react-toastify";
 import PageTitle from "../Shared/PageTitle";
 import { TransFormString } from "../Shared/StaticText";
-import { states } from "../Shared/staticData";
 import useAllDataStore from "../APIStore/Store";
 import { useNavigate } from "react-router-dom";
 import CommonDialogue from "../Shared/CommonDialogue";

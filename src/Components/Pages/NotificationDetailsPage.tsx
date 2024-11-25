@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import classes from "../../assets/Modules/HomePage.module.scss";
+import classes from "../../assets/Module/Layout.module.scss";
 import { TransFormString } from "../Shared/StaticText";
 import useAllDataStore from "../APIStore/Store";
 import Button from "react-bootstrap/esm/Button";
@@ -16,32 +16,32 @@ const NotificationDetailsPage = () => {
   const stateId = searchParams.get("state") || 0;
   const [listPage, setListPage] = useState<any>();
   const [showPage, setShowPage] = useState<boolean>(false);
-  const [errorPage, setErrorPage] = useState<boolean>(false);
+  //const [errorPage, setErrorPage] = useState<boolean>(false);
 
-  const modifyTheData = (data: any) => {
-    console.log("Sachin prev", data);
-    const res = data.map((listItem: any) => ({
-      ...listItem,
-      active: listItem?.active ? "True" : "False",
-      showBadge: listItem?.showBadge ? "True" : "False",
-      // applyStartDate: listItem?.applyStartDate
-      //   ? new Date(listItem?.applyStartDate).toLocaleDateString("en-GB")
-      //   : null,
-      // notificationDate: listItem?.notificationDate
-      //   ? new Date(listItem?.notificationDate).toLocaleDateString("en-GB")
-      //   : null,
-      // applyEndDate: listItem?.applyEndDate
-      //   ? new Date(listItem?.applyEndDate).toLocaleDateString("en-GB")
-      //   : null,
-      // examEndDate: listItem?.examEndDate
-      //   ? new Date(listItem?.examEndDate).toLocaleDateString("en-GB")
-      //   : null,
-      // hallTicketDate: listItem?.hallTicketDate
-      //   ? new Date(listItem?.hallTicketDate).toLocaleDateString("en-GB")
-      //   : null,
-    }));
-    return res;
-  };
+  // const modifyTheData = (data: any) => {
+  //   console.log("Sachin prev", data);
+  //   const res = data.map((listItem: any) => ({
+  //     ...listItem,
+  //     active: listItem?.active ? "True" : "False",
+  //     showBadge: listItem?.showBadge ? "True" : "False",
+  //     // applyStartDate: listItem?.applyStartDate
+  //     //   ? new Date(listItem?.applyStartDate).toLocaleDateString("en-GB")
+  //     //   : null,
+  //     // notificationDate: listItem?.notificationDate
+  //     //   ? new Date(listItem?.notificationDate).toLocaleDateString("en-GB")
+  //     //   : null,
+  //     // applyEndDate: listItem?.applyEndDate
+  //     //   ? new Date(listItem?.applyEndDate).toLocaleDateString("en-GB")
+  //     //   : null,
+  //     // examEndDate: listItem?.examEndDate
+  //     //   ? new Date(listItem?.examEndDate).toLocaleDateString("en-GB")
+  //     //   : null,
+  //     // hallTicketDate: listItem?.hallTicketDate
+  //     //   ? new Date(listItem?.hallTicketDate).toLocaleDateString("en-GB")
+  //     //   : null,
+  //   }));
+  //   return res;
+  // };
   const fetchData = async () => {
     if (window.location.href.includes("jobDetails")) {
       const listData: any = await getAlljobNotificationDetailsById(

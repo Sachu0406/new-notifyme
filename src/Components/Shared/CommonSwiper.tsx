@@ -1,5 +1,4 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+
 import "../../assets/Style/SwiperStyle.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/bundle"; //ref link https://swiperjs.com/react
@@ -15,7 +14,7 @@ interface CarouselSectionProps {
 const SwiperSection: React.FC<CarouselSectionProps> = ({
   title,
   carouselItems,
-  viewAllLink = "#view-all",
+  //viewAllLink = "#view-all",
 }) => {
   //const navigate = useNavigate();
 

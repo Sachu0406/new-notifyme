@@ -16,7 +16,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   //const { isDarkMode, toggleTheme } = useTheme();
   const isSmallDevice = useIsSmallDevice();
-  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
+  const [carouselItems] = useState<CarouselItem[]>([]);
   return (
     <>
       <Header />

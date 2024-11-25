@@ -1,5 +1,5 @@
-import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
 
 interface ModalProps {
   title: string;
@@ -7,7 +7,7 @@ interface ModalProps {
   footer: React.ReactNode;
   onSave: () => void;
   onClose: () => void;
-  triggerText: string;
+  triggerText?: string;
 }
 
 const CommonModal: React.FC<ModalProps> = ({
@@ -16,14 +16,7 @@ const CommonModal: React.FC<ModalProps> = ({
   footer,
   onSave,
   onClose,
-  triggerText,
 }) => {
-  const [show, setShow] = React.useState(false);
-
-  const handleClose = () => {
-    setShow(false);
-    onClose();
-  };
 
   return (
     <>
@@ -42,7 +35,7 @@ const CommonModal: React.FC<ModalProps> = ({
               <button
                 type="button"
                 className="close"
-                onClick={handleClose}
+                onClick={()=>onClose()}
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
@@ -54,7 +47,7 @@ const CommonModal: React.FC<ModalProps> = ({
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={handleClose}
+                onClick={onClose}
               >
                 Close
               </button>

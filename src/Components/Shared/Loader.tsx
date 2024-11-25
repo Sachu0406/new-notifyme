@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../assets/Style/Loader.scss";
 import logoPath from "/public/TradeLogo3.png";
 

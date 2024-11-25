@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { UseFetchResult } from "../Shared/ObjectModals";
-import Spinner from "../Shared/Spinner";
 
 const useFetch = (url: string): UseFetchResult => {
   const [data, setData] = useState<any | null>(null);

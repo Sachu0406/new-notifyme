@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { iState } from "../Shared/ObjectModals";
+//import { iState } from "../Shared/ObjectModals";
 import useAllDataStore from "../APIStore/Store";
 import { useSearchParams } from "react-router-dom";
 import SelectStateModal from "./SelectStateModal";
@@ -14,13 +14,13 @@ const Home = () => {
   const state = searchParams.get("state") || 0;
   const [showDialogue] = useState<boolean>(state ? false : true);
   const { stateList, getAllStates } = useAllDataStore();
-  const [currentState, setCurrentState] = useState<iState>({
-    districts: [],
-    _id: "",
-    shortName: "",
-    stateName: "",
-    stateId: 0,
-  });
+  // const [currentState, setCurrentState] = useState<iState>({
+  //   districts: [],
+  //   _id: "",
+  //   shortName: "",
+  //   stateName: "",
+  //   stateId: 0,
+  // });
   const getStates = useCallback(() => {
     if (stateList?.length === 0 && +state !== 0) {
       getAllStates();
@@ -29,10 +29,10 @@ const Home = () => {
 
   useEffect(() => {
     if (stateList?.length > 0 && +state !== 0) {
-      const matchedState: any = stateList?.find(
-        (obj: any) => obj.stateId === +state
-      );
-      setCurrentState(matchedState);
+      // const matchedState: any = stateList?.find(
+      //   (obj: any) => obj.stateId === +state
+      // );
+      //setCurrentState(matchedState);
     }
     getStates();
   }, [stateList, state]);

@@ -19,7 +19,7 @@ import {
   AuthenticateUserAPI,
 } from "../APIServices/Services";
 
-const useAllDataStore = create<store>((set, get) => ({
+const useAllDataStore = create<store>((set) => ({
   stateList: [],
   allJobNotificationList: [],
   jobNotificationDetailsByIdList: [],

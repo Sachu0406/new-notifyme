@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import allNotificationStore from "../APIStore/Store";
 
 const API_URL = "https://notifymebackend.onrender.com/api/v1";
 

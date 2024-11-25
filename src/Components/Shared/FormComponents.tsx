@@ -426,7 +426,6 @@ interface FormMaskedInputProps {
 export const FormMaskedInputField: React.FC<FormMaskedInputProps> = ({
   name,
   label,
-  type = "mask",
   placeHolder,
   required = false,
   value: initialValue,

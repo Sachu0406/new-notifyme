@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import classes from "../../assets/Modules/HomePage.module.scss";
 
 const ConfirmationPopup = (props: any) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TransFormString } from "../Shared/StaticText";
-import classes from "../../assets/Modules/HomePage.module.scss";
+import classes from "../../assets/Module/AllNotifications.module.scss";
 import { Accordion, useAccordionButton, Card, Button } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
 import useAllDataStore from "../APIStore/Store";
