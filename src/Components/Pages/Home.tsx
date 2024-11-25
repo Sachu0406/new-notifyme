@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 //import { iState } from "../Shared/ObjectModals";
-import useAllDataStore from "../APIStore/Store";
-import { useSearchParams } from "react-router-dom";
-import SelectStateModal from "./SelectStateModal";
+// import useAllDataStore from "../APIStore/Store";
+// import { useSearchParams } from "react-router-dom";
+// import SelectStateModal from "./SelectStateModal";
 import SwiperSection from "../Shared/CommonSwiper";
 import { CarouselItem } from "../Shared/staticData";
 import NotificationCards from "./AllNotifications";
 
 const Home = () => {
  // const [searchParams] = useSearchParams();
-  const [pageRefresh, setPageRefresh] = useState<number>(Math.random());
-  const [carouselItems, setCarouselItems] = useState<CarouselItem[]>([]);
+  const [pageRefresh] = useState<number>(Math.random());
+  const [carouselItems] = useState<CarouselItem[]>([]);
   //const state = searchParams.get("state") || 0;
   //const [showDialogue] = useState<boolean>(state ? false : true);
   //const { stateList, getAllStates } = useAllDataStore();
