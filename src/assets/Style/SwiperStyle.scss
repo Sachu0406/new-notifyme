@@ -43,9 +43,9 @@
   background-size: cover; // Ensure the image covers the entire container
   background-position: center;
   margin-bottom:1rem;
+  width: 100%;
   img {
     cursor: pointer;
-    width: 100%;
     max-width: 150px; // Ensure all images have equal width
     height: 150px; // Fixed height for uniformity
     object-fit: cover; // Ensure images fill the space
