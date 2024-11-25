@@ -16,7 +16,6 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
   title,
   carouselItems,
   moreInfoText,
-  moreInfoTextLink
 }) => {
   //const navigate = useNavigate();
 
