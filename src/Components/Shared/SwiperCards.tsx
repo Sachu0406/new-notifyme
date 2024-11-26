@@ -6,16 +6,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import { Button } from "react-bootstrap";
 import ShareButton from "../Shared/CommonShareIcon";
-
-interface CarouselItem {
-    id: number;
-    title: string;
-    description: string;
-    image: string;
-    applicationDate: string;
-    eligibility: string;
-    officialWebsite?: string;
-}
+import swiperBg from "../../assets/Images/TradeLogo5.png"
 
 interface CarouselSectionProps {
     title: string;
@@ -64,8 +55,8 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                 centeredSlides={true}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop={true}
-                navigation={true}
-                pagination={{ clickable: true }}
+                navigation={{ enabled: window.innerWidth > 768 }} // Enable only for larger screens
+                //pagination={{ clickable: true, dynamicBullets: window.innerWidth > 768 }}
                 onSwiper={(swiper) => setSwiperInstance(swiper)} // Capture Swiper instance
                 breakpoints={{
                     480: { slidesPerView: 1 },
@@ -75,69 +66,65 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                 modules={[Autoplay, Pagination, Navigation]}
             >
                 {carouselItems.map((item: any) => (
-                    <SwiperSlide key={item?.id}>
+                    <SwiperSlide key={item?.id} style={{minWidth:"290px"}}>
                         <div
                             className={`${styles.gridItem} ${flippedCardId === item?.id ? styles.flipped : ""
                                 }`}
+                                 
                         >
                             {flippedCardId === item?.id ? (
-                                <div className={styles.back}>
+                                <div className={styles.back} style={{backgroundImage:`url(${swiperBg})`}}>
                                     <div>
-                                        <h4 className="fw-bold d-flex justify-content-center">
-                                            {item?.title}
-                                        </h4>
-                                        <h6 className="fw-bold d-flex justify-content-center text-secondary">
-                                            {item?.title}
-                                        </h6>
+                                        <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
+                                        <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
                                     </div>
                                     <div className="d-flex justify-content-between">
-                                        <p className="fw-semibold">Eligibility: </p>
-                                        <p className="fw-semibold">{item?.eligibility}</p>
+                                        <p className="fw-semibold">Eligibility: </p>&nbsp;<p className="fw-semibold">{item.eligibility}</p>
                                     </div>
                                     <div className="d-flex justify-content-between">
-                                        <p className="fw-semibold">Official Website: </p>
-                                        <p className="fw-semibold">
-                                            <a
-                                                href={item?.officialWebsite || "#"}
-                                                title={"Click here to go to Official Website"}
-                                            >
-                                                Click here
-                                            </a>
-                                        </p>
+                                        <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">500</p>
                                     </div>
                                     <div className="d-flex justify-content-between">
-                                        <Button variant="light" onClick={handleUnflip}>
-                                            Close
-                                        </Button>
-                                        <Button variant="success" className="d-flex align-items-center">
+                                        <p className="fw-semibold">Official Website: </p>&nbsp;<p className="fw-semibold"><a href={item?.officialWebsite || "#"} title={"click here to go to Official WebSite"}>Click here</a></p>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <Button
+                                            variant="light"
+                                            onClick={handleUnflip}
+                                            className="d-flex align-items-center">
+                                            Close</Button>
+                                        <Button
+                                            variant="success"
+                                            //onClick={handleShare}
+                                            className="d-flex align-items-center"
+                                        >
                                             Apply through us
                                         </Button>
+
                                     </div>
                                 </div>
                             ) : (
                                 <div className={styles.front}>
                                     <div>
-                                        <h4 className="fw-bold d-flex justify-content-center">
-                                            {item?.title}
-                                        </h4>
-                                        <h6 className="fw-bold d-flex justify-content-center text-secondary">
-                                            {item?.description}
-                                        </h6>
+                                        <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
+                                        <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
                                     </div>
                                     <div className="d-flex justify-content-between">
-                                        <p className="fw-semibold">Notification Date: </p>
-                                        <p className="fw-semibold">{item?.applicationDate}</p>
+                                        <p className="fw-semibold">Notification Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <p className="fw-semibold">Application Start Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <p className="fw-semibold">Application End Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
                                     </div>
                                     <div className="d-flex justify-content-between">
                                         <ShareButton />
                                         <Button
                                             variant="primary"
-                                            onClick={() => handleFlip(item?.id)}
-                                            className="d-flex align-items-center"
-                                        >
-                                            More details
-                                            <i className="bi bi-three-dots ms-1" />
-                                        </Button>
+                                            onClick={() => handleFlip(item.id)}
+                                            className="d-flex align-items-center">
+                                            More details<i className="bi bi-three-dots ms-1" /></Button>
                                     </div>
                                 </div>
                             )}

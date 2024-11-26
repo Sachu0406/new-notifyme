@@ -29,6 +29,47 @@
     margin-bottom: 1rem;
   }
 
+  .swiper {
+    position: relative;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border-radius: 50%;
+      z-index: 10;
+
+      &.swiper-button-next {
+        right: 0;
+      }
+
+      &.swiper-button-prev {
+        left: 0;
+      }
+
+      @media (max-width: 768px) {
+        display: none; // Hide for mobile
+      }
+    }
+
+    .swiper-pagination {
+      @media (max-width: 768px) {
+        display: none; // Hide pagination for mobile
+      }
+    }
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto; // Ensure no overflow issues
+  }
+
 }
 
 .carousel-item {
@@ -42,8 +83,9 @@
   background-image: url('../Images/swiperBg.jpg'); // Add your background image
   background-size: cover; // Ensure the image covers the entire container
   background-position: center;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
   width: 100%;
+
   img {
     cursor: pointer;
     max-width: 150px; // Ensure all images have equal width
