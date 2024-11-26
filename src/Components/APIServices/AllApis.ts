@@ -7,6 +7,7 @@ export const serviceConstant = {
   stateApi: "/states",
   JobNotificationAPI: "/jobs",
   AdmNotificationAPI: "/adms",
+  AllNotificationAPI: "/notifyMe",
   visitorsCount: "/getVisitorCount",
   RegisterUser: "/registeruser",
   LoginUser: "/Authentication",
