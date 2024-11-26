@@ -4,15 +4,13 @@ import logo from '/public/TradeLogo4.png';
 import { AiOutlineClose } from 'react-icons/ai';
 import { TransFormString } from './Shared/StaticText';
 import { useTheme } from '../ThemeContext';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useIsSmallDevice from './Shared/IsMobileDevice';
 //import { dayMode } from '../assets/Images/dark-mode-night.svg';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const isMobile = useIsSmallDevice();
-  const stateId = searchParams.get("state") || 0;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
 
@@ -22,7 +20,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <span className="brand" title='Home' onClick={() => navigate(`/Home?state=${stateId}`)}>
+      <span className="brand" title='Home' onClick={() => navigate(`/`)}>
         <img src={logo} alt="Logo" className="logo" />
         {TransFormString.appName}
       </span>

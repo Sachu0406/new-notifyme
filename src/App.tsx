@@ -8,6 +8,12 @@ import { useLoader } from "./Components/Shared/UseLoader";
 import { ThemeProvider } from "./ThemeContext";
 
 const ManageJobsGrid = lazy(() => import("./Components/Pages/ManageJobsGrid"));
+const ManageAdmissionGrid = lazy(
+  () => import("./Components/Pages/ManageAdmissionGrid")
+);
+const ErrorPage = lazy(() => import("./Components/Shared/Error404"));
+const HomePage = lazy(() => import("./Components/Pages/Home"));
+
 // const ManageGovtSchemes = lazy(
 //   () => import("./Components/Pages/ManageGovtSchemes")
 // );
@@ -17,20 +23,15 @@ const ManageJobsGrid = lazy(() => import("./Components/Pages/ManageJobsGrid"));
 // const ManageAdmissions = lazy(
 //   () => import("./Components/Pages/ManageAdmissions")
 // );
-const ManageAdmissionGrid = lazy(
-  () => import("./Components/Pages/ManageAdmissionGrid")
-);
 // const ManageJobs = lazy(() => import("./Components/Pages/ManageJobs"));
-const HomePage = lazy(() => import("./Components/Pages/Home"));
 // const Login = lazy(() => import("./Components/Auth/SignIn"));
 // const Register = lazy(() => import("./Components/Auth/SignUp"));
-const NotificationList = lazy(
-  () => import("./Components/Pages/NotificationList")
-);
-const ErrorPage = lazy(() => import("./Components/Shared/Error404"));
-const NotificationDetailsPage = lazy(
-  () => import("./Components/Pages/NotificationDetailsPage")
-);
+// const NotificationList = lazy(
+//   () => import("./Components/Pages/NotificationList")
+// );
+// const NotificationDetailsPage = lazy(
+//   () => import("./Components/Pages/NotificationDetailsPage")
+// );
 
 function useShouldShowLayout() {
   const location = useLocation();
@@ -49,15 +50,15 @@ function App() {
         {/* <Route path="/Login" Component={Login} />
         <Route path="/Register" Component={Register} /> */}
         <Route path="/Home" Component={HomePage} />
-        <Route path="/jobs" Component={NotificationList} />
+        <Route path="/manageJobsGrid" Component={ManageJobsGrid} />
+        {/* <Route path="/manageJobs" Component={ManageJobs} /> */}
+        {/* <Route path="/jobs" Component={NotificationList} />
         <Route path="/admissions" Component={NotificationList} />
         <Route path="/others" Component={NotificationList} />
         <Route path="/jobDetails" Component={NotificationDetailsPage} />
         <Route path="/AdmissionDetails" Component={NotificationDetailsPage} />
-        <Route path="/otherDetails" Component={NotificationDetailsPage} />
-        {/* <Route path="/manageJobs" Component={ManageJobs} />
+        <Route path="/otherDetails" Component={NotificationDetailsPage} /> 
         <Route path="/manageJobs/:jobId" Component={ManageJobs} /> */}
-        <Route path="/manageJobsGrid" Component={ManageJobsGrid} />
         {/* <Route path="/manageAdmissions" Component={ManageAdmissions} />
         <Route path="/manageAdmissions/:admId" Component={ManageAdmissions} /> */}
         <Route path="/manageAdmissionsGrid" Component={ManageAdmissionGrid} />
