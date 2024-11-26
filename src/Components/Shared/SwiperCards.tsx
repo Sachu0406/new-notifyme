@@ -125,7 +125,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                                             variant="primary"
                                             onClick={() => handleFlip(item.id)}
                                             className="d-flex align-items-center">
-                                            More details<i className="bi bi-three-dots ms-1" /></Button>
+                                            More details ...</Button>
                                     </div>
                                 </div>
                             )}
