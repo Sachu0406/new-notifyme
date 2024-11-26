@@ -6,7 +6,8 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import { Button } from "react-bootstrap";
 import ShareButton from "../Shared/CommonShareIcon";
-import swiperBg from "../../assets/Images/TradeLogo5.png"
+import swiperBg from "../../assets/Images/TradeLogohd2.png"
+import swiperBg2 from "../../assets/Images/TradeLogohd1.png"
 
 interface CarouselSectionProps {
     title: string;
@@ -73,7 +74,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                                  
                         >
                             {flippedCardId === item?.id ? (
-                                <div className={styles.back} style={{backgroundImage:`url(${swiperBg})`}}>
+                                <div className={styles.back} style={{backgroundImage:`url(${swiperBg2})`}}>
                                     <div>
                                         <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
                                         <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
@@ -104,7 +105,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                                     </div>
                                 </div>
                             ) : (
-                                <div className={styles.front}>
+                                <div className={styles.front} style={{backgroundImage:`url(${swiperBg})`}}>
                                     <div>
                                         <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
                                         <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
