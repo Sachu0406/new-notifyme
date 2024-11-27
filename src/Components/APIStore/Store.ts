@@ -17,10 +17,13 @@ import {
   getVisitorsCountAPI,
   RegisterUserAPI,
   AuthenticateUserAPI,
+  getAllNotificationAPI,
+  addNewNotificationAPI,
 } from "../APIServices/Services";
 
 const useAllDataStore = create<store>((set) => ({
   stateList: [],
+  allNotificationList: [],
   allJobNotificationList: [],
   jobNotificationDetailsByIdList: [],
   jobNotificationDetailsStateIdList: [],
@@ -29,6 +32,30 @@ const useAllDataStore = create<store>((set) => ({
   admsNotificationDetailsByIdList: [],
   visitorsCount: [],
 
+  //new code
+
+  getAllNotificationList: async () => {
+    const res: any = await getAllNotificationAPI();
+    set({
+      allNotificationList: res,
+    });
+    return res;
+  },
+  addNewNotification: async (dataObj: any) => {
+    const res: any = await addNewNotificationAPI(dataObj);
+    return res;
+  },
+  updateNotificationDetailById: async (id: string, dataObj: any) => {
+    const res: any = await updateJobNotificationDetailByIdAPI(id, dataObj);
+    return res;
+  },
+  deleteNotificationDetailById: async (id: string) => {
+    const res: any = await deleteJobNotificationDetailByIdAPI(id);
+    return res;
+  },
+
+
+  //stashed
   RegisterUser: async (dataObj: any) => {
     return await RegisterUserAPI(dataObj);
   },

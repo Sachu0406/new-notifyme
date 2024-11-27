@@ -7,13 +7,13 @@ import Loader from "./Components/Shared/Loader";
 import { useLoader } from "./Components/Shared/UseLoader";
 import { ThemeProvider } from "./ThemeContext";
 
-const ManageJobsGrid = lazy(() => import("./Components/Pages/ManageJobsGrid"));
-const ManageAdmissionGrid = lazy(
-  () => import("./Components/Pages/ManageAdmissionGrid")
-);
+const NotificationForm = lazy(() => import("./Components/Pages/NotificationForm"));
 const ErrorPage = lazy(() => import("./Components/Shared/Error404"));
 const HomePage = lazy(() => import("./Components/Pages/Home"));
 
+// const ManageAdmissionGrid = lazy(
+//   () => import("./Components/Pages/ManageAdmissionGrid")
+// );
 // const ManageGovtSchemes = lazy(
 //   () => import("./Components/Pages/ManageGovtSchemes")
 // );
@@ -47,28 +47,28 @@ function App() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="*" Component={ErrorPage} />
+        <Route path="/" element={<Navigate to="/Home" replace />} />
         {/* <Route path="/Login" Component={Login} />
         <Route path="/Register" Component={Register} /> */}
         <Route path="/Home" Component={HomePage} />
-        <Route path="/manageJobsGrid" Component={ManageJobsGrid} />
-        {/* <Route path="/manageJobs" Component={ManageJobs} /> */}
+        <Route path="/addNewNotification" Component={NotificationForm} />
         {/* <Route path="/jobs" Component={NotificationList} />
+        <Route path="/manageAdmissionsGrid" Component={ManageAdmissionGrid} />
+        <Route path="/manageJobs" Component={ManageJobs} />
         <Route path="/admissions" Component={NotificationList} />
         <Route path="/others" Component={NotificationList} />
         <Route path="/jobDetails" Component={NotificationDetailsPage} />
         <Route path="/AdmissionDetails" Component={NotificationDetailsPage} />
         <Route path="/otherDetails" Component={NotificationDetailsPage} /> 
-        <Route path="/manageJobs/:jobId" Component={ManageJobs} /> */}
-        {/* <Route path="/manageAdmissions" Component={ManageAdmissions} />
-        <Route path="/manageAdmissions/:admId" Component={ManageAdmissions} /> */}
-        <Route path="/manageAdmissionsGrid" Component={ManageAdmissionGrid} />
-        {/* <Route path="/manageGovtSchemes" Component={ManageGovtSchemes} />
+        <Route path="/manageJobs/:jobId" Component={ManageJobs} /> 
+       <Route path="/manageAdmissions" Component={ManageAdmissions} />
+        <Route path="/manageAdmissions/:admId" Component={ManageAdmissions} /> 
+        <Route path="/manageGovtSchemes" Component={ManageGovtSchemes} />
         <Route
           path="/manageGovtSchemes/:schemeId"
           Component={ManageGovtSchemes}
         />
         <Route path="/manageGovtSchemesGrid" Component={GovtSchemesGrid} /> */}
-        <Route path="/" element={<Navigate to="/Home" replace />} />
       </Routes>
     </Suspense>
   );

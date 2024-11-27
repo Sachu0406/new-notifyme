@@ -1,9 +1,17 @@
 export type store = {
   stateList: Array<any>;
+  getAllStates: () => void;
+
+  allNotificationList: [];
+  getAllNotificationList: () => void;
+  addNewNotification: (dataObj: any) => void;
+  updateNotificationDetailById: (id: string, dataObj: any) => void;
+  deleteNotificationDetailById: (id: string) => void;
+
+
   allJobNotificationList: [];
   jobNotificationDetailsByIdList: [];
   jobNotificationDetailsStateIdList: [];
-  getAllStates: () => void;
   getAllJobNotificationList: () => void;
   getAlljobNotificationDetailsById: (jobId: string) => void;
   addNewJobNotification: (dataObj: any) => void;
