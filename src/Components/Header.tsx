@@ -25,12 +25,12 @@ const Header: React.FC = () => {
         {TransFormString.appName}
       </span>
       <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
-        {!isMobile && <a href="javascript:void(0)" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
+        {!isMobile && <a href="" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
         <a href="#jobs" >Jobs</a>
         <a href="#admissions" >Admissions</a>
         <a href="#entrances" >Entrances</a>
         <a href="#contact" >Join Whatsapp Group</a>
-        {isMobile && isMenuOpen && <a href="javascript:void(0)" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
+        {isMobile && isMenuOpen && <a href="" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
         {!isMenuOpen ? <>

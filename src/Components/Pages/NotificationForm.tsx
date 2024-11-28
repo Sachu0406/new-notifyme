@@ -5,8 +5,9 @@ import "react-toastify/dist/ReactToastify.css";
 import PageTitle from "../Shared/PageTitle";
 import useAllDataStore from "../APIStore/Store";
 import CommonDialogue from "../Shared/CommonDialogue";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { allStates } from "../Shared/staticData";
+import { TransFormString } from "../Shared/StaticText";
 type Question = {
   id: number;
   question: string;
@@ -14,16 +15,29 @@ type Question = {
   options?: string[];
   maxLength?: number;
 };
-
-type NotificationFormProps = {
-  editData?: Record<number, string>; // Pre-populated data for edit case
+type EditData = {
+  notificationHeader: string;
+  notificationSubHeader: string;
+  notificationDate: string;
+  applyStartDate: string;
+  applyEndDate: string;
+  applicationFee: string;
+  officialWebSite: string;
+  eligibility: string;
+  isNewNotification: boolean;
+  stateName: string;
+  notificationType: string;
+  ownerName?: string;
 };
 
-const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
+
+const NotificationForm: React.FC = () => {
   const navigate = useNavigate();
-  const states = allStates.map((listItem:any)=>listItem.stateName)
-  const { addNewNotification,} = useAllDataStore();
+  const { notificationId } = useParams<{ notificationId: string }>();
+  const states = allStates.map((listItem: any) => listItem.stateName)
+  const { addNewNotification, updateNotificationDetailById, getNotificationDetailsById, notificationDetailsByIdList } = useAllDataStore();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [editData, setEditData] = useState<EditData | null>(notificationDetailsByIdList);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [previewMode, setPreviewMode] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -31,10 +45,33 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
   const users = ["ns3122", "rs3122"];
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (notificationId) {
+      getNotificationDetailsById(notificationId);
+    }
+    if (notificationDetailsByIdList?.length > 0) {
+      setEditData(notificationDetailsByIdList)
+    }
+  }, [notificationId, notificationDetailsByIdList?.length]);
+
   // Populate the form with editData on component load
   useEffect(() => {
     if (editData) {
-      setAnswers(editData);
+      const prePopulatedAnswers: Record<number, string> = {
+        1: editData.notificationHeader,
+        2: editData.notificationSubHeader,
+        3: editData.notificationDate.split("/").reverse().join("-"), // Convert to YYYY-MM-DD
+        4: editData.applyStartDate.split("/").reverse().join("-"),
+        5: editData.applyEndDate.split("/").reverse().join("-"),
+        6: editData.applicationFee,
+        7: editData.officialWebSite,
+        8: editData.eligibility,
+        9: editData.isNewNotification ? "Yes" : "No",
+        10: editData.stateName,
+        11: editData.notificationType,
+        12: editData.ownerName || "",
+      };
+      setAnswers(prePopulatedAnswers);
     }
   }, [editData]);
 
@@ -74,7 +111,7 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
     maxLength?: number
   ) => {
     if (maxLength && value.length > maxLength) {
-      return; // Prevent exceeding maxLength
+      return;
     }
     setAnswers((prev) => ({ ...prev, [id]: value }));
   };
@@ -123,13 +160,10 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
       stateName: answers[10],
       notificationType: answers[11],
     };
-    handleSucceess();
     if (users?.includes(answers[12])) {
       try {
-        const res: any = await addNewNotification(formattedAnswers);
+        const res: any = await notificationId ? updateNotificationDetailById(notificationId || "", formattedAnswers) : addNewNotification(formattedAnswers);
         if (res?.status === "Success") {
-          console.log(answers, "Submitted Data:", formattedAnswers);
-          toast.success("Form submitted successfully!");
           handleSucceess();
         } else {
           toast.error(res?.message);
@@ -161,14 +195,14 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
           </div>
           <div className="ps-3">
             <span style={{ fontSize: "1.2rem", color: "black" }}>
-              Notification added successfully.
+              {notificationId ? TransFormString?.notificationUpdateMsg : TransFormString.notificationAddMsg}
             </span>
           </div>
         </div>
       ),
       cancelText: "Close",
-      acceptText: "Add New",
-      handleProceed: ()=>window.location.reload(),
+      acceptText: notificationId ? "Go to List" : "Add New",
+      handleProceed: notificationId ? () => navigate("/manageNotificationsData") : () => window.location.reload(),
       handleClose: () => navigate("/"),
     });
     setShowModal(true);
@@ -237,7 +271,7 @@ const NotificationForm: React.FC<NotificationFormProps> = ({ editData }) => {
 
   return (
     <>
-      <PageTitle data={"Create Notification"} />
+      {notificationId ? <PageTitle data={"Edit Notification"} /> : <PageTitle data={"Create Notification"} />}
       <Container
         style={{
           padding: "20px",

@@ -3,7 +3,9 @@ export type store = {
   getAllStates: () => void;
 
   allNotificationList: [];
+  notificationDetailsByIdList:any;
   getAllNotificationList: () => void;
+  getNotificationDetailsById: (id: string) => void;
   addNewNotification: (dataObj: any) => void;
   updateNotificationDetailById: (id: string, dataObj: any) => void;
   deleteNotificationDetailById: (id: string) => void;

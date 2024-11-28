@@ -39,7 +39,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                 <div className="section-heading">
                     <span>{title}</span>
                     <a
-                        href={"javascript:void(0)"}
+                        href={""}
                         className="view-all-link"
                         title="To see more"
                         style={{ cursor: "not-allowed" }}

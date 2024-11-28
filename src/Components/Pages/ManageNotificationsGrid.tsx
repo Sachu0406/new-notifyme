@@ -7,19 +7,19 @@ import useAllDataStore from "../APIStore/Store";
 import { useNavigate } from "react-router-dom";
 import CommonDialogue from "../Shared/CommonDialogue";
 
-const ManageJobsGrid: React.FC = () => {
+const ManageNotificationsGrid: React.FC = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalContent, updateModalContent] = useState<any>(null);
   const [refresh, setRefresh] = useState<number>(Math.random());
   const {
-    allJobNotificationList,
-    getAllJobNotificationList,
-    deleteJobsNotificationDetailById,
+    getAllNotificationList,
+    allNotificationList,
+    deleteNotificationDetailById,
   } = useAllDataStore();
 
   const fetchData = useCallback(async () => {
-    getAllJobNotificationList();
+    getAllNotificationList();
     setRefresh(Math.random());
   }, []);
 
@@ -56,7 +56,7 @@ const ManageJobsGrid: React.FC = () => {
       handleProceed: async () => {
         try {
           setShowModal(false);
-          const res: any = await deleteJobsNotificationDetailById(id);
+          const res: any = await deleteNotificationDetailById(id);
           if (res.status === "Success") {
             //toast.success(`Successfully deleted`);
             updateModalContent({
@@ -79,13 +79,13 @@ const ManageJobsGrid: React.FC = () => {
     setShowModal(true);
   };
   useEffect(() => {
-    getAllJobNotificationList();
+    getAllNotificationList();
   }, []);
   const columns = [
-    { field: "nameOfBoard", headerName: "Board", width: "150px" },
+    { field: "notificationHeader", headerName: "Notification Header", width: "150px" },
     {
-      field: "nameOfNotification",
-      headerName: "Name of Notification",
+      field: "notificationSubHeader",
+      headerName: "Notification Sub Header",
       width: "200px",
     },
     {
@@ -95,34 +95,45 @@ const ManageJobsGrid: React.FC = () => {
     },
     {
       field: "applyStartDate",
-      headerName: "Apply Date",
+      headerName: "Apply Start Date",
       width: "100px",
     },
     {
-      field: "hallTicketDate",
-      headerName: "Hall Ticket Date",
+      field: "applyEndDate",
+      headerName: "Apply End Date",
       width: "100px",
     },
     {
-      field: "examStartDate",
-      headerName: "Exam Date",
+      field: "applicationFee",
+      headerName: "Application Fee",
       width: "100px",
     },
     {
-      field: "resultDate",
-      headerName: "Result Date",
+      field: "officialWebSite",
+      headerName: "Official Website",
       width: "100px",
     },
     {
-      field: "active",
-      headerName: "Is Active",
+      field: "eligibility",
+      headerName: "Eligibilty",
       width: "100px",
     },
     {
-      field: "showBadge",
-      headerName: "Badge",
+      field: "isNewNotification",
+      headerName: "New Notification",
       width: "100px",
     },
+    {
+      field: "stateName",
+      headerName: "State",
+      width: "100px",
+    },
+    {
+      field: "notificationType",
+      headerName: "Notification Type",
+      width: "100px",
+    },
+
     {
       field: "actions",
       headerName: "Actions",
@@ -160,7 +171,7 @@ const ManageJobsGrid: React.FC = () => {
           </button>
         </div>
         <CommonDataGrid
-          data={allJobNotificationList}
+          data={allNotificationList}
           rowsPerPage={10}
           columns={columns}
           fetchData={fetchData}
@@ -183,4 +194,4 @@ const ManageJobsGrid: React.FC = () => {
   );
 };
 
-export default ManageJobsGrid;
+export default ManageNotificationsGrid;
