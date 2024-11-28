@@ -23,7 +23,7 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
       <div className="carousel-section">
         <div className="section-heading">
           <span>{title}</span>
-          <a href={"javascript:void(0)"} className="view-all-link" title="To see more" style={{ cursor: "not-allowed" }}>
+          <a href={""} className="view-all-link" title="To see more" style={{ cursor: "not-allowed" }}>
             {moreInfoText}
           </a>
         </div>

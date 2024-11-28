@@ -19,11 +19,13 @@ import {
   AuthenticateUserAPI,
   getAllNotificationAPI,
   addNewNotificationAPI,
+  getAllNotificationDetailByIdAPI,
 } from "../APIServices/Services";
 
 const useAllDataStore = create<store>((set) => ({
   stateList: [],
   allNotificationList: [],
+  notificationDetailsByIdList:[],
   allJobNotificationList: [],
   jobNotificationDetailsByIdList: [],
   jobNotificationDetailsStateIdList: [],
@@ -38,6 +40,13 @@ const useAllDataStore = create<store>((set) => ({
     const res: any = await getAllNotificationAPI();
     set({
       allNotificationList: res,
+    });
+    return res;
+  },
+  getNotificationDetailsById: async (id: string) => {
+    const res: any = await getAllNotificationDetailByIdAPI(id);
+    set({
+      notificationDetailsByIdList: res,
     });
     return res;
   },

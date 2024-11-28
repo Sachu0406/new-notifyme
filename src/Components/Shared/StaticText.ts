@@ -71,4 +71,6 @@ export const TransFormString = {
   whatsAppSupportLink: "https://wa.me/919441317903?text= Hi, I have a query",
   whatsAppApplyLink:
     "https://wa.me/919441317903?text= wanna apply for this post.",
+  notificationAddMsg: "Notification added successfully.",
+  notificationUpdateMsg: "Notification updated successfully.",
 };
