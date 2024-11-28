@@ -231,6 +231,230 @@ export const carouselData2 = [
   },
 ];
 
+export const allStates = [
+  {
+    _id: 50,
+    stateId: 50,
+    shortName: "All",
+    stateName: "All"
+  },
+  {
+    _id: 1,
+    stateId: 1,
+    shortName: "AP",
+    stateName: "Andhra Pradesh"
+  },
+  {
+    _id: 2,
+    stateId: 2,
+    shortName: "AR",
+    stateName: "Arunachal Pradesh"
+  },
+  {
+    _id: 3,
+    stateId: 3,
+    shortName: "AS",
+    stateName: "Assam",
+  },
+  {
+    _id: 4,
+    stateId: 4,
+    shortName: "BR",
+    stateName: "Bihar",
+  },
+  {
+    _id: 5,
+    stateId: 5,
+    shortName: "CG",
+    stateName: "Chandigarh (UT)",
+    districts: ["Chandigarh"]
+  },
+  {
+    _id: 6,
+    stateId: 6,
+    shortName: "CH",
+    stateName: "Chhattisgarh"
+  },
+  {
+    _id: 7,
+    stateId: 7,
+    shortName: "DN",
+    stateName: "Dadra and Nagar Haveli (UT)"
+    
+  },
+  {
+    _id: 8,
+    stateId: 8,
+    shortName: "DD",
+    stateName: "Daman and Diu (UT)"
+  },
+  {
+    _id: 9,
+    stateId: 9,
+    shortName: "DL",
+    stateName: "Delhi (NCT)"
+    
+  },
+  {
+    _id: 10,
+    stateId: 10,
+    shortName: "GA",
+    stateName: "Goa"
+  },
+  {
+    _id: 11,
+    stateId: 11,
+    shortName: "GJ",
+    stateName: "Gujarat"
+  },
+  {
+    _id: 12,
+    stateId: 12,
+    shortName: "HR",
+    stateName: "Haryana"
+  },
+  {
+    _id: 13,
+    stateId: 13,
+    shortName: "HP",
+    stateName: "Himachal Pradesh"
+  },
+  {
+    _id: 14,
+    stateId: 14,
+    shortName: "JK",
+    stateName: "Jammu and Kashmir",
+  },
+  {
+    _id: 15,
+    stateId: 15,
+    shortName: "JH",
+    stateName: "Jharkhand"
+  },
+  {
+    _id: 16,
+    stateId: 16,
+    shortName: "KA",
+    stateName: "Karnataka"
+  },
+  {
+    _id: 17,
+    stateId: 17,
+    shortName: "KL",
+    stateName: "Kerala"
+  },
+  {
+    _id: 18,
+    stateId: 18,
+    shortName: "LD",
+    stateName: "Lakshadweep (UT)",
+  },
+  {
+    _id: 19,
+    stateId: 19,
+    shortName: "MP",
+    stateName: "Madhya Pradesh"
+    
+  },
+  {
+    _id: 20,
+    stateId: 20,
+    shortName: "MH",
+    stateName: "Maharashtra"
+  },
+  {
+    _id: 21,
+    stateId: 21,
+    shortName: "MN",
+    stateName: "Manipur"
+  },
+  {
+    _id: 22,
+    stateId: 22,
+    shortName: "ML",
+    stateName: "Meghalaya"
+  },
+  {
+    _id: 23,
+    stateId: 23,
+    shortName: "MZ",
+    stateName: "Mizoram"
+  },
+  {
+    _id: 24,
+    stateId: 24,
+    shortName: "NL",
+    stateName: "Nagaland"
+  },
+  {
+    _id: 25,
+    stateId: 25,
+    shortName: "OR",
+    stateName: "Odisha"
+  },
+  {
+    _id: 26,
+    stateId: 26,
+    shortName: "PY",
+    stateName: "Puducherry (UT)",
+  },
+  {
+    _id: 27,
+    stateId: 27,
+    shortName: "PB",
+    stateName: "Punjab"
+  },
+  {
+    _id: 28,
+    stateId: 28,
+    shortName: "RJ",
+    stateName: "Rajasthan"
+  },
+  {
+    _id: 29,
+    stateId: 29,
+    shortName: "SK",
+    stateName: "Sikkim",
+  },
+  {
+    _id: 30,
+    stateId: 30,
+    shortName: "TN",
+    stateName: "Tamil Nadu"
+  },
+  {
+    _id: 31,
+    stateId: 31,
+    shortName: "TG",
+    stateName: "Telangana"
+  },
+  {
+    _id: 32,
+    stateId: 32,
+    shortName: "TR",
+    stateName: "Tripura"
+  },
+  {
+    _id: 33,
+    stateId: 33,
+    shortName: "UK",
+    stateName: "Uttarakhand"
+  },
+  {
+    _id: 34,
+    stateId: 34,
+    shortName: "UP",
+    stateName: "Uttar Pradesh"
+    
+  },
+  {
+    _id: 35,
+    stateId: 35,
+    shortName: "WB",
+    stateName: "West Bengal"
+  },
+];
+
 export const states = [
   {
     _id: 1,
