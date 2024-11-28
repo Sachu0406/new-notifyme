@@ -15,9 +15,7 @@ const NotificationCards: React.FC<dataSection> = ({
   const handleFlip = (id: number) => setFlippedCardId(id);
 
   const handleUnflip = () => setFlippedCardId(null);
-  const handleApplyThroughUs = () => {
 
-  }
   return (
     <div className={styles.gridContainer}>
       {gridData.map((item: any) => (
