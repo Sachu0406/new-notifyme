@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import ShareButton from "../Shared/CommonShareIcon";
 import { Button } from "react-bootstrap";
+import { TransFormString } from "../Shared/StaticText";
 
 interface dataSection {
   gridData: any
@@ -14,7 +15,9 @@ const NotificationCards: React.FC<dataSection> = ({
   const handleFlip = (id: number) => setFlippedCardId(id);
 
   const handleUnflip = () => setFlippedCardId(null);
+  const handleApplyThroughUs = () => {
 
+  }
   return (
     <div className={styles.gridContainer}>
       {gridData.map((item: any) => (
@@ -68,10 +71,10 @@ const NotificationCards: React.FC<dataSection> = ({
                 Close</Button>
               <Button
                 variant="success"
-                //onClick={handleShare}
+                //onClick={handleApplyThroughUs}
                 className="d-flex align-items-center"
               >
-                Apply through us
+                <a href={TransFormString?.whatsAppApplyLink + item?.title + item?.officialWebsite} target="_blank" rel="noopener noreferrer">Apply through us</a>
               </Button>
 
             </div>
