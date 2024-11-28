@@ -29,7 +29,7 @@ const Header: React.FC = () => {
         <a href="#jobs" >Jobs</a>
         <a href="#admissions" >Admissions</a>
         <a href="#entrances" >Entrances</a>
-        <a href="#contact" >Join Whatsapp Group</a>
+        <a href="https://chat.whatsapp.com/FrOPBIiJ5JZEiL4kvOjvoF" >Join Whatsapp Group</a>
         {isMobile && isMenuOpen && <a href="" onClick={() => { toggleTheme(), toggleMenu() }}><i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i></a>}
       </nav>
       <div className={`menu-icon`} onClick={toggleMenu} >
