@@ -51,8 +51,8 @@ const SwiperSection: React.FC<CarouselSectionProps> = ({
           >
             <div className="carousel-item">
               <h2>Ts Tet</h2>
-              <img src={item.image} alt={item.title} className="carousel-image" />
-              <h3>{item.title}</h3>
+              <img src={item.image} alt={item.notificationHeader} className="carousel-image" />
+              <h3>{item.notificationHeader}</h3>
               <p>{item.description}</p>
             </div>
 
