@@ -24,7 +24,7 @@ const ManageNotificationsGrid: React.FC = () => {
   }, []);
 
   const handleEdit = (id: string) => {
-    navigate(`/manageJobs/${id}`);
+    navigate(`/editNotification/${id}`);
   };
   const handleDelete = async (id: string) => {
     updateModalContent({
@@ -46,7 +46,7 @@ const ManageNotificationsGrid: React.FC = () => {
           </div>
           <div className="ps-3">
             <span style={{ fontSize: "1.2rem", color: "black" }}>
-              Are you sure you want to delete this job Notification?
+              Are you sure you want to delete this Notification?
             </span>
           </div>
         </div>
@@ -165,9 +165,9 @@ const ManageNotificationsGrid: React.FC = () => {
         <div className="d-flex justify-content-end m-2">
           <button
             className="btn btn-primary"
-            onClick={() => navigate(`/manageJobs`)}
+            onClick={() => navigate(`/addNewNotification`)}
           >
-            <i className="bi bi-plus-lg"></i> Add Job Notification
+            <i className="bi bi-plus-lg"></i> Add New Notification
           </button>
         </div>
         <CommonDataGrid

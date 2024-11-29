@@ -21,22 +21,28 @@ const NotificationCards: React.FC<dataSection> = ({
       {gridData.map((item: any) => (
         <div
           key={item.id}
-          className={`${styles.gridItem} ${flippedCardId === item.id ? styles.flipped : ""
+          className={`${styles.gridItem} ${flippedCardId === item?.id ? styles.flipped : ""
             }`}
         >
           <div className={styles.front}>
             <div>
-              <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
-              <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
+              <h5 className="fw-bold d-flex justify-content-center"
+              style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+              >{item?.notificationHeader}</h5>
+              <h6 className="fw-bold d-flex justify-content-center ">{item?.notificationSubHeader}</h6>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Notification Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+              <p className="fw-semibold">Notification Date: </p>&nbsp;<p className="fw-semibold">{item?.notificationDate}</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Application Start Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+              <p className="fw-semibold">Application Start Date: </p>&nbsp;<p className="fw-semibold">{item?.applyStartDate}</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Application End Date: </p>&nbsp;<p className="fw-semibold">{item.applicationDate}</p>
+              <p className="fw-semibold">Application End Date: </p>&nbsp;<p className="fw-semibold">{item?.applyEndDate}</p>
             </div>
             <div className="d-flex justify-content-between">
               <ShareButton />
@@ -49,17 +55,23 @@ const NotificationCards: React.FC<dataSection> = ({
           </div>
           <div className={styles.back}>
             <div>
-              <h4 className="fw-bold d-flex justify-content-center">{item.title}</h4>
-              <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.title}</h6>
+              <h5 className="fw-bold d-flex justify-content-center "
+               style={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+              >{item.notificationHeader}</h5>
+              <h6 className="fw-bold d-flex justify-content-center text-secondary">{item.notificationSubHeader}</h6>
             </div>
             <div className="d-flex justify-content-between">
               <p className="fw-semibold">Eligibility: </p>&nbsp;<p className="fw-semibold">{item.eligibility}</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">500</p>
+              <p className="fw-semibold">Application Fee: </p>&nbsp;<p className="fw-semibold">{item?.applicationFee}</p>
             </div>
             <div className="d-flex justify-content-between">
-              <p className="fw-semibold">Official Website: </p>&nbsp;<p className="fw-semibold"><a href={item?.officialWebsite || "#"} title={"click here to go to Official WebSite"}>Click here</a></p>
+              <p className="fw-semibold">Official Website: </p>&nbsp;<p className="fw-semibold"><a href={item?.officialWebSite} title={"click here to go to Official WebSite"} className="stretched-link">Click here</a></p>
             </div>
             <div className="d-flex justify-content-between">
               <Button
@@ -72,7 +84,7 @@ const NotificationCards: React.FC<dataSection> = ({
                 //onClick={handleApplyThroughUs}
                 className="d-flex align-items-center"
               >
-                <a href={TransFormString?.whatsAppApplyLink + item?.title + item?.officialWebsite} target="_blank" rel="noopener noreferrer">Apply through us</a>
+                <a href={TransFormString?.whatsAppApplyLink + item?.notificationHeader } target="_blank" rel="noopener noreferrer" className="text-white">Apply through us</a>
               </Button>
 
             </div>
