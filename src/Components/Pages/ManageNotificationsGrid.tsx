@@ -6,6 +6,7 @@ import { TransFormString } from "../Shared/StaticText";
 import useAllDataStore from "../APIStore/Store";
 import { useNavigate } from "react-router-dom";
 import CommonDialogue from "../Shared/CommonDialogue";
+import { gridData } from "../Shared/staticData";
 
 const ManageNotificationsGrid: React.FC = () => {
   const navigate = useNavigate();
@@ -171,7 +172,7 @@ const ManageNotificationsGrid: React.FC = () => {
           </button>
         </div>
         <CommonDataGrid
-          data={allNotificationList}
+          data={allNotificationList || gridData}
           rowsPerPage={10}
           columns={columns}
           fetchData={fetchData}
