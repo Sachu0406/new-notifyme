@@ -22,9 +22,10 @@ export type GridItem = {
   notificationDate: string;
   applyStartDate: string;
   applyEndDate: string;
-  officialWebsite: string;
+  officialWebSite: string;
   applicationFee: string;
   eligibility: string;
+  isNewNotification? : boolean;
 };
 
 export const gridData: GridItem[] = [
@@ -35,7 +36,7 @@ export const gridData: GridItem[] = [
     notificationDate: "2024-11-01",
     applyStartDate: "2024-11-05",
     applyEndDate: "2024-12-15",
-    officialWebsite: "https://www.xyzgovrecruitment.gov",
+    officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹500",
     eligibility: "Bachelor's degree in Eng.",
   },
@@ -46,7 +47,7 @@ export const gridData: GridItem[] = [
     notificationDate: "2024-10-25",
     applyStartDate: "2024-11-01",
     applyEndDate: "2024-11-30",
-    officialWebsite: "https://www.statehealthboard.in",
+    officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹300",
     eligibility: "Degree in Medicine.",
   },
@@ -57,7 +58,7 @@ export const gridData: GridItem[] = [
     notificationDate: "2024-10-20",
     applyStartDate: "2024-10-25",
     applyEndDate: "2024-11-20",
-    officialWebsite: "https://www.nationalbankjobs.com",
+    officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹600",
     eligibility: "Graduation.",
   },
@@ -68,7 +69,7 @@ export const gridData: GridItem[] = [
     notificationDate: "2024-09-15",
     applyStartDate: "2024-09-20",
     applyEndDate: "2024-10-31",
-    officialWebsite: "https://www.centraledu.in",
+    officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹400",
     eligibility:
       "Bachelor's degree in Education..",
@@ -80,7 +81,7 @@ export const gridData: GridItem[] = [
     notificationDate: "2024-11-10",
     applyStartDate: "2024-11-15",
     applyEndDate: "2025-01-15",
-    officialWebsite: "https://www.upsc.gov.in",
+    officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹1000",
     eligibility: "Bachelor's degree.",
   },

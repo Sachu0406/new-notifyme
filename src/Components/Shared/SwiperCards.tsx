@@ -94,33 +94,25 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                     </h6>
                   </div>
                   <div className="d-flex justify-content-between ">
-                    <p className="fw-semibold ">
-                      Eligibility:{" "}
-                    </p>
+                    <p className="fw-semibold ">Eligibility: </p>
                     &nbsp;
-                    <p className="fw-semibold ">
-                      {item?.eligibility}
-                    </p>
+                    <p className="fw-semibold ">{item?.eligibility}</p>
                   </div>
                   <div className="d-flex justify-content-between ">
-                    <p className="fw-semibold ">
-                      Application Fee:{" "}
-                    </p>
+                    <p className="fw-semibold ">Application Fee: </p>
                     &nbsp;
-                    <p className="fw-semibold ">
-                      {item?.applicationFee}
-                    </p>
+                    <p className="fw-semibold ">{item?.applicationFee}</p>
                   </div>
                   <div className="d-flex justify-content-between ">
-                    <p className="fw-semibold ">
-                      Official Website:
-                    </p>
+                    <p className="fw-semibold ">Official Website:</p>
                     &nbsp;
                     <p className="fw-semibold ">
                       <a
                         href={item?.officialWebSite}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         title={"click here to go to Official WebSite"}
-                        className="stretched-link"
+                        className="link"
                       >
                         Click here
                       </a>
@@ -128,7 +120,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                   </div>
                   <div className="d-flex justify-content-between">
                     <Button
-                      variant="dark"
+                      variant="secondary"
                       onClick={handleUnflip}
                       className="d-flex align-items-center border-white"
                     >
@@ -139,7 +131,20 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                       //onClick={handleShare}
                       className="d-flex align-items-center"
                     >
-                      <a href={TransFormString?.whatsAppApplyLink + item?.notificationHeader } target="_blank" rel="noopener noreferrer" className="text-white">Apply through us</a>
+                      <a
+                        href={
+                          TransFormString?.whatsAppApplyLink +
+                          " " +
+                          item?.notificationHeader +
+                          " " +
+                          window.location.href
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white"
+                      >
+                        Apply through us
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -164,31 +169,19 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                     </h6>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <p className="fw-semibold ">
-                      Notification Date:{" "}
-                    </p>
+                    <p className="fw-semibold ">Notification Date: </p>
                     &nbsp;
-                    <p className="fw-semibold ">
-                      {item?.notificationDate}
-                    </p>
+                    <p className="fw-semibold ">{item?.notificationDate}</p>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <p className="fw-semibold ">
-                      Application Start Date:{" "}
-                    </p>
+                    <p className="fw-semibold ">Application Start Date: </p>
                     &nbsp;
-                    <p className="fw-semibold ">
-                      {item?.applyStartDate}
-                    </p>
+                    <p className="fw-semibold ">{item?.applyStartDate}</p>
                   </div>
                   <div className="d-flex justify-content-between">
-                    <p className="fw-semibold ">
-                      Application End Date:{" "}
-                    </p>
+                    <p className="fw-semibold ">Application End Date: </p>
                     &nbsp;
-                    <p className="fw-semibold ">
-                      {item?.applyEndDate}
-                    </p>
+                    <p className="fw-semibold ">{item?.applyEndDate}</p>
                   </div>
                   <div className="d-flex justify-content-between">
                     <ShareButton />
