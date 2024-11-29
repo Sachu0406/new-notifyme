@@ -42,7 +42,7 @@ export const TransFormString = {
   examLevel: "Exam Level",
   qualification: "Qualification",
   ageLimit: "Age Limit",
-  OfficialWebSite: "Official WebSite",
+  officialWebSite: "Official WebSite",
   notificationDetails: "Notification Details",
   applyLink: "Apply Link",
   hallTicketLink: "Hall Ticket Link",
