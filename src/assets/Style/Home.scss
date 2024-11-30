@@ -1,63 +1,62 @@
-@import './variables.scss';
+@use "./variables" as vars;
 
 .home-container {
-    padding: 1rem;
-  
-    .section-heading {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-  
-      .view-all-link {
-        font-size: 1rem;
-        color: #007bff;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
-  
-    .separator {
-      height: 2px;
-      background-color: #ddd;
-      margin-bottom: 1rem;
-    }
-  
-    .carousel-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-  
-      &::-webkit-scrollbar {
-        display: none; /* Hide the scrollbar for better aesthetics */
-      }
-  
-      .carousel-item {
-        flex: 0 0 calc(33.33% - 1rem); /* Show 3 items in a row */
-        max-width: calc(33.33% - 1rem);
-  
-        img {
-          width: 100%;
-          height: auto;
-          border-radius: 5px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
-  
-    @media (max-width: 768px) {
-      .carousel-container {
-        .carousel-item {
-          flex: 0 0 calc(50% - 1rem); /* Show 2 items per row on mobile */
-          max-width: calc(50% - 1rem);
-        }
+  padding: 1rem;
+
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .view-all-link {
+      font-size: 1rem;
+      color: #007bff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
-  
+
+  .separator {
+    height: 2px;
+    background-color: #ddd;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+
+    &::-webkit-scrollbar {
+      display: none; /* Hide the scrollbar for better aesthetics */
+    }
+
+    .carousel-item {
+      flex: 0 0 calc(33.33% - 1rem); /* Show 3 items in a row */
+      max-width: calc(33.33% - 1rem);
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .carousel-container {
+      .carousel-item {
+        flex: 0 0 calc(50% - 1rem); /* Show 2 items per row on mobile */
+        max-width: calc(50% - 1rem);
+      }
+    }
+  }
+}

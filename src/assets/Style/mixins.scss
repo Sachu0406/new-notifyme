@@ -5,7 +5,7 @@
 }
 
 @mixin responsive-menu {
-  @media (max-width: $breakpoint-mobile) {
+  @media (max-width: vars.$breakpoint-mobile) {
     display: none;
   }
 }

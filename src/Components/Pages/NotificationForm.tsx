@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import { Button, Form, Alert, Container, Row, Col } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -15,29 +16,19 @@ type Question = {
   options?: string[];
   maxLength?: number;
 };
-type EditData = {
-  notificationHeader: string;
-  notificationSubHeader: string;
-  notificationDate: string;
-  applyStartDate: string;
-  applyEndDate: string;
-  applicationFee: string;
-  officialWebSite: string;
-  eligibility: string;
-  isNewNotification: boolean;
-  stateName: string;
-  notificationType: string;
-  ownerName?: string;
-};
-
 
 const NotificationForm: React.FC = () => {
   const navigate = useNavigate();
   const { notificationId } = useParams<{ notificationId: string }>();
-  const states = allStates.map((listItem: any) => listItem.stateName)
-  const { addNewNotification, updateNotificationDetailById, getNotificationDetailsById, notificationDetailsByIdList } = useAllDataStore();
+  const states = allStates.map((listItem: any) => listItem.stateName);
+  const {
+    addNewNotification,
+    updateNotificationDetailById,
+    getNotificationDetailsById,
+    notificationDetailsByIdList,
+  } = useAllDataStore();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [editData, setEditData] = useState<EditData | null>(notificationDetailsByIdList);
+  const [editData, setEditData] = useState<any>(notificationDetailsByIdList);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [previewMode, setPreviewMode] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -50,7 +41,7 @@ const NotificationForm: React.FC = () => {
       getNotificationDetailsById(notificationId);
     }
     if (notificationDetailsByIdList?.length > 0) {
-      setEditData(notificationDetailsByIdList)
+      setEditData(notificationDetailsByIdList);
     }
   }, [notificationId, notificationDetailsByIdList?.length]);
 
@@ -162,7 +153,9 @@ const NotificationForm: React.FC = () => {
     };
     if (users?.includes(answers[12])) {
       try {
-        const res: any = await notificationId ? updateNotificationDetailById(notificationId || "", formattedAnswers) : addNewNotification(formattedAnswers);
+        const res: any = (await notificationId)
+          ? updateNotificationDetailById(notificationId || "", formattedAnswers)
+          : addNewNotification(formattedAnswers);
         if (res?.status === "Success") {
           handleSucceess();
         } else {
@@ -195,14 +188,18 @@ const NotificationForm: React.FC = () => {
           </div>
           <div className="ps-3">
             <span style={{ fontSize: "1.2rem", color: "black" }}>
-              {notificationId ? TransFormString?.notificationUpdateMsg : TransFormString.notificationAddMsg}
+              {notificationId
+                ? TransFormString?.notificationUpdateMsg
+                : TransFormString.notificationAddMsg}
             </span>
           </div>
         </div>
       ),
       cancelText: "Close",
       acceptText: notificationId ? "Go to List" : "Add New",
-      handleProceed: notificationId ? () => navigate("/manageNotificationsData") : () => window.location.reload(),
+      handleProceed: notificationId
+        ? () => navigate("/manageNotificationsData")
+        : () => window.location.reload(),
       handleClose: () => navigate("/"),
     });
     setShowModal(true);
@@ -271,7 +268,11 @@ const NotificationForm: React.FC = () => {
 
   return (
     <>
-      {notificationId ? <PageTitle data={"Edit Notification"} /> : <PageTitle data={"Create Notification"} />}
+      {notificationId ? (
+        <PageTitle data={"Edit Notification"} />
+      ) : (
+        <PageTitle data={"Create Notification"} />
+      )}
       <Container
         style={{
           padding: "20px",

@@ -3,20 +3,23 @@ import styles from "../../assets/Module/AllNotifications.module.scss";
 import ShareButton from "../Shared/CommonShareIcon";
 import { Button } from "react-bootstrap";
 import { TransFormString } from "../Shared/StaticText";
+import { GridItem } from "../Shared/staticData";
 
 interface dataSection {
-  gridData: any;
+  gridData: [GridItem];
 }
 
 const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
-  const [flippedCardId, setFlippedCardId] = useState<number | null>(null);
-  const handleFlip = (id: number) => setFlippedCardId(id);
+  const [flippedCardId, setFlippedCardId] = useState<number | string | null>(
+    null
+  );
+  const handleFlip = (id: number | string) => setFlippedCardId(id);
 
   const handleUnflip = () => setFlippedCardId(null);
 
   return (
     <div className={styles.gridContainer}>
-      {gridData.map((item: any) => (
+      {gridData?.map((item: GridItem) => (
         <div
           key={item.id}
           className={`${styles.gridItem} ${
@@ -51,11 +54,11 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
               <p className="fw-semibold">Application End Date: </p>&nbsp;
               <p className="fw-semibold">{item?.applyEndDate}</p>
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mt-2">
               <ShareButton />
               <Button
                 variant="primary"
-                onClick={() => handleFlip(item.id)}
+                onClick={() => handleFlip(item?.id)}
                 className="d-flex align-items-center"
               >
                 More details ...
@@ -98,7 +101,7 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
                 Click here
               </a>
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mt-2">
               <Button
                 variant="light"
                 onClick={handleUnflip}

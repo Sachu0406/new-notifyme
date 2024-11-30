@@ -1,17 +1,17 @@
-@import './variables.scss';
+@use "./variables" as vars;
 
 .footer {
   width: 100%;
   padding: 1rem 2rem;
-  background-color: $background-dark;
-  //color: $primary-text;
+  background-color: vars.$background-dark;
+  //color: vars.$primary-text;
   position: fixed;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid $secondary-light;
+  border-top: 1px solid vars.$secondary-light;
   font-size: 0.875rem;
   border-radius: 0.5rem 0.5rem 0 0;
   z-index: 5;
@@ -20,7 +20,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: $text-light;
+    color: vars.$text-light;
 
     a {
       color: inherit;
@@ -33,7 +33,7 @@
         transition: color 0.3s;
 
         &:hover {
-          color: $info-light;
+          color: vars.$info-light;
         }
       }
     }
@@ -46,17 +46,17 @@
     .icon {
       width: 20px;
       height: 20px;
-      background-color: $primary-color;
-      mask: url('/path-to-your-icons.svg') no-repeat center / contain; // Replace with actual icon paths
+      background-color: vars.$primary-color;
+      mask: url("/path-to-your-icons.svg") no-repeat center / contain; // Replace with actual icon paths
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: $info-light;
+        background-color: vars.$info-light;
       }
     }
   }
 
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: vars.$breakpoint-md) {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;

@@ -3,7 +3,7 @@ import React, {
   useState,
   useContext,
   ReactNode,
-  useEffect,
+  //useEffect,
 } from "react";
 
 interface AuthContextType {
@@ -16,22 +16,22 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>("abcd1234edgh4321i1j2k3l4");
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      if (!localStorage.getItem("token")) {
-        const response = await fetch(
-          "https://notifymebackend.onrender.com/api/v1/get-token"
-        );
-        const data = await response.json();
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchToken = async () => {
+  //     if (!localStorage.getItem("token")) {
+  //       const response = await fetch(
+  //         "https://notifymebackend.onrender.com/api/v1/get-token"
+  //       );
+  //       const data = await response.json();
+  //       setToken(data.token);
+  //       localStorage.setItem("token", data.token);
+  //     }
+  //   };
 
-    fetchToken();
-  }, []);
+  //   fetchToken();
+  // }, []);
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>

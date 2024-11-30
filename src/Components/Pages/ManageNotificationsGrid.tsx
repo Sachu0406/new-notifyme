@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useCallback, useEffect } from "react";
 import CommonDataGrid from "../Shared/CommonDataGrid";
 import { toast } from "react-toastify";
@@ -83,7 +84,11 @@ const ManageNotificationsGrid: React.FC = () => {
     getAllNotificationList();
   }, []);
   const columns = [
-    { field: "notificationHeader", headerName: "Notification Header", width: "150px" },
+    {
+      field: "notificationHeader",
+      headerName: "Notification Header",
+      width: "150px",
+    },
     {
       field: "notificationSubHeader",
       headerName: "Notification Sub Header",
