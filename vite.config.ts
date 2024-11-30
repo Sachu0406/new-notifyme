@@ -22,4 +22,10 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    middlewareMode: false, // Use default Vite middleware
+    watch: {
+      ignored: ["**/node_modules/**"], // Optional: Avoid watching node_modules for performance
+    },
+  },
 });
