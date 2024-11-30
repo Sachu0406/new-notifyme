@@ -16,14 +16,7 @@ const ManageNotificationsGrid = lazy(
   () => import("./Components/Pages/ManageNotificationsGrid")
 );
 
-// function useShouldShowLayout() {
-//   const location = useLocation();
-//   const pathsWithoutLayout = ["/Login", "/Register"];
-//   return !pathsWithoutLayout.includes(location.pathname);
-// }
-
 function App() {
-  //const shouldShowLayout = useShouldShowLayout();
   const loading = useLoader();
 
   const publicRoutes = (
@@ -32,10 +25,10 @@ function App() {
         <Route path="*" Component={ErrorPage} />
         <Route path="/" Component={HomePage} />
         <Route path="/addNewNotification" Component={NotificationForm} />
-        {/* <Route
+        <Route
           path="/editNotification/:notificationId"
           Component={NotificationForm}
-        /> */}
+        />
         <Route
           path="/manageNotificationsData"
           Component={ManageNotificationsGrid}

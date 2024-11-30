@@ -246,7 +246,7 @@ export const allStates = [
     _id: 50,
     stateId: 50,
     shortName: "All",
-    stateName: "All",
+    stateName: "All India",
   },
   {
     _id: 1,

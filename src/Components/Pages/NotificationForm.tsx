@@ -20,7 +20,7 @@ type Question = {
 const NotificationForm: React.FC = () => {
   const navigate = useNavigate();
   const { notificationId } = useParams<{ notificationId: string }>();
-  const states = allStates.map((listItem: any) => listItem.stateName);
+  const states = allStates?.map((listItem: any) => listItem.stateName);
   const {
     addNewNotification,
     updateNotificationDetailById,
@@ -51,9 +51,9 @@ const NotificationForm: React.FC = () => {
       const prePopulatedAnswers: Record<number, string> = {
         1: editData.notificationHeader,
         2: editData.notificationSubHeader,
-        3: editData.notificationDate.split("/").reverse().join("-"), // Convert to YYYY-MM-DD
-        4: editData.applyStartDate.split("/").reverse().join("-"),
-        5: editData.applyEndDate.split("/").reverse().join("-"),
+        3: editData.notificationDate?.split("/")?.reverse().join("-"), // Convert to YYYY-MM-DD
+        4: editData.applyStartDate?.split("/")?.reverse().join("-"),
+        5: editData.applyEndDate?.split("/")?.reverse().join("-"),
         6: editData.applicationFee,
         7: editData.officialWebSite,
         8: editData.eligibility,
