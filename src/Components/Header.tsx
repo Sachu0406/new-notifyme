@@ -39,7 +39,11 @@ const Header: React.FC = () => {
         <a href="#jobs">Jobs</a>
         <a href="#admissions">Admissions</a>
         <a href="#entrances">Entrances</a>
-        <a href="https://chat.whatsapp.com/FrOPBIiJ5JZEiL4kvOjvoF">
+        <a
+          href="https://chat.whatsapp.com/FrOPBIiJ5JZEiL4kvOjvoF"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Join Whatsapp Group
         </a>
         {isMobile && isMenuOpen && (
