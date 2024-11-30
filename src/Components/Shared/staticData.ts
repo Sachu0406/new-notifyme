@@ -15,6 +15,22 @@ export const onlineOfflineMode = [
     value: "Both",
   },
 ];
+
+export type EditData = {
+  notificationHeader: string;
+  notificationSubHeader: string;
+  notificationDate: string;
+  applyStartDate: string;
+  applyEndDate: string;
+  applicationFee: string;
+  officialWebSite: string;
+  eligibility: string;
+  isNewNotification: boolean;
+  stateName: string;
+  notificationType: string;
+  ownerName?: string;
+};
+
 export type GridItem = {
   id: number | string;
   notificationHeader: string;
@@ -25,7 +41,7 @@ export type GridItem = {
   officialWebSite: string;
   applicationFee: string;
   eligibility: string;
-  isNewNotification? : boolean;
+  isNewNotification?: boolean;
 };
 
 export const gridData: GridItem[] = [
@@ -71,8 +87,7 @@ export const gridData: GridItem[] = [
     applyEndDate: "2024-10-31",
     officialWebSite: "https://notifyme.co.in",
     applicationFee: "₹400",
-    eligibility:
-      "Bachelor's degree in Education..",
+    eligibility: "Bachelor's degree in Education..",
   },
   {
     id: 5,

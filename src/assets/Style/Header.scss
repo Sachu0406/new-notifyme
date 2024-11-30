@@ -1,17 +1,17 @@
-@import './variables.scss';
+@use "./variables" as vars;
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1rem;
-  background-color: $success-mid;
-  color: $primary-text;
-  position: fixed; 
-  top: 0; 
+  background-color: vars.$success-mid;
+  color: vars.$primary-text;
+  position: fixed;
+  top: 0;
   left: 0;
-  width: 100%; 
-  z-index: 5; 
+  width: 100%;
+  z-index: 5;
   border-radius: 0 0 0.5rem 0.5rem;
 
   .brand {
@@ -19,7 +19,7 @@
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    cursor:pointer;
+    cursor: pointer;
     .logo {
       width: 40px;
       height: auto;
@@ -33,27 +33,27 @@
 
     a {
       position: relative;
-      color: $text-primary;
+      color: vars.$text-primary;
       text-decoration: none;
       font-weight: 700;
       overflow: hidden;
       padding: 0.5rem 1rem;
       // Hover effect styles
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         left: 0;
         bottom: 0;
         height: 100%;
         width: 0;
-        background-color: $info-light;
+        background-color: vars.$info-light;
         border-radius: 1rem;
         transition: width 0.3s ease-in-out;
         z-index: -1;
       }
 
       &:hover {
-        color: $overlay-light;
+        color: vars.$overlay-light;
 
         &::before {
           width: 100%;
@@ -61,15 +61,15 @@
       }
 
       // Apply the underline effect only on larger screens
-      @media (min-width: $breakpoint-md) {
+      @media (min-width: vars.$breakpoint-md) {
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           bottom: -2px;
           height: 2px;
           width: 0;
-          background-color: $secondary-text;
+          background-color: vars.$secondary-text;
           transition: width 0.3s ease-in-out;
         }
 
@@ -84,7 +84,7 @@
     }
 
     // Mobile menu styling
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: vars.$breakpoint-md) {
       display: none;
       flex-direction: column;
       position: absolute;
@@ -96,11 +96,11 @@
       backdrop-filter: blur(10px); // Blurs the background
       padding: 1rem 0;
       z-index: 10;
-    
+
       &.open {
         display: flex;
       }
-    
+
       a {
         text-align: center;
       }
@@ -112,10 +112,15 @@
       left: 70%; // Start after the menu width
       width: 30%;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.3); // Slightly dark overlay for rest of the screen
+      background-color: rgba(
+        0,
+        0,
+        0,
+        0.3
+      ); // Slightly dark overlay for rest of the screen
       z-index: 10; // Ensure it's below the menu but above other elements
       display: none;
-    
+
       &.open {
         display: block;
       }
@@ -131,7 +136,7 @@
     span {
       width: 25px;
       height: 3px;
-      background-color: $background-default;
+      background-color: vars.$background-default;
       transition: transform 0.3s;
     }
 

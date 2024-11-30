@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import SwiperSection from "../Shared/CommonSwiper";
 import { GridItem, gridData } from "../Shared/staticData";
@@ -12,11 +13,10 @@ const Home = () => {
   const [newNotifyData, setNewNotifyData] = useState<any>(gridData);
   async function fetchNotifications() {
     try {
-      const res: any = await getAllNotificationList();
-  
+      const res = await getAllNotificationList();
+
       const filteredData: GridItem[] = res
-        .filter((item: any) => {
-         
+        ?.filter((item: GridItem) => {
           return (
             item?.id &&
             item?.notificationHeader &&
@@ -30,7 +30,7 @@ const Home = () => {
             item?.isNewNotification
           );
         })
-        .map((item: any) => {
+        .map((item: GridItem) => {
           // Map the data to match the GridItem structure
           return {
             id: item.id,

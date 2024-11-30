@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import "../../assets/Style/SwiperStyle.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -118,7 +119,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                       </a>
                     </p>
                   </div>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-2">
                     <Button
                       variant="secondary"
                       onClick={handleUnflip}
@@ -183,7 +184,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                     &nbsp;
                     <p className="fw-semibold ">{item?.applyEndDate}</p>
                   </div>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-2">
                     <ShareButton />
                     <Button
                       variant="primary"
