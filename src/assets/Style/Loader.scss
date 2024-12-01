@@ -9,8 +9,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(0.1px) !important;
-  background: vars.$info-text;
+  backdrop-filter: blur(3px) !important;
+  background: vars.$background-transparent;
   z-index: 9999; /* Ensure the spinner is on top of other elements */
   text-align: center; /* Ensure all content inside is centered */
 }
@@ -24,21 +24,21 @@
 .spinner-overlay .loading-text {
   font-size: 1.5em;
   margin-bottom: 3px; /* Space between text and progress bar */
-  color: #333; /* Adjust color as needed */
+  color: vars.$light-text; /* Adjust color as needed */
 }
 
 .spinner-overlay .progress-bar-container {
   width: 100%;
   max-width: 300px; /* Limit the width of the progress bar */
   height: 10px; /* Height of the progress bar */
-  background: #e0e0e0; /* Background of the progress bar container */
+  background: vars.$primary-text; /* Background of the progress bar container */
   border-radius: 2.5px;
   overflow: hidden;
 }
 
 .spinner-overlay .progress-bar {
   height: 100%;
-  background: rgb(89, 232, 129); /* Progress bar color */
+  background: vars.$success-mid; /* Progress bar color */
   animation: fillProgressBar 2s linear infinite; /* Adjust duration and animation */
 }
 
