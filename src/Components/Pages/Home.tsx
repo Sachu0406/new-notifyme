@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import SwiperSection from "../Shared/CommonSwiper";
-import { GridItem, gridData } from "../Shared/staticData";
+import { gridData } from "../Shared/staticData";
 import NotificationCards from "./AllNotifications";
 import SwiperCards from "../Shared/SwiperCards";
 import useAllDataStore from "../APIStore/Store";
@@ -14,41 +14,10 @@ const Home = () => {
   async function fetchNotifications() {
     try {
       const res = await getAllNotificationList();
-
-      const filteredData: GridItem[] = res
-        ?.filter((item: GridItem) => {
-          return (
-            item?.id &&
-            item?.notificationHeader &&
-            item?.notificationSubHeader &&
-            item?.notificationDate &&
-            item?.applyStartDate &&
-            item?.applyEndDate &&
-            item?.officialWebSite &&
-            item?.applicationFee &&
-            item?.eligibility &&
-            item?.isNewNotification
-          );
-        })
-        .map((item: GridItem) => {
-          // Map the data to match the GridItem structure
-          return {
-            id: item.id,
-            notificationHeader: item.notificationHeader,
-            notificationSubHeader: item.notificationSubHeader,
-            notificationDate: item.notificationDate,
-            applyStartDate: item.applyStartDate,
-            applyEndDate: item.applyEndDate,
-            officialWebSite: item.officialWebSite,
-            applicationFee: item.applicationFee,
-            eligibility: item.eligibility,
-            isNewNotification: item?.isNewNotification || false,
-          } as GridItem;
-        });
-      const newNotifications: GridItem[] = filteredData.filter(
-        (item: any) => item.isNewNotification === true
+      const newNotifications: any = res?.map((item: any) =>
+        item?.isNewNotification ? item : null
       );
-      setAllData(filteredData);
+      setAllData(res);
       setNewNotifyData(newNotifications);
       setPageRefresh(Math.random());
     } catch (err) {

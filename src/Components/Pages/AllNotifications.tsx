@@ -110,7 +110,7 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
                 Close
               </Button>
               <Button
-                variant="success"
+                variant="info"
                 //onClick={handleApplyThroughUs}
                 className="d-flex align-items-center"
               >

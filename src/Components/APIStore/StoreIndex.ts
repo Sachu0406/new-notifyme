@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GenericObject } from "../Shared/ObjectModals";
 
 export type store = {
   allNotificationList: Array<GenericObject>;
-  notificationDetailsByIdList: GenericObject;
-  getAllNotificationList: () => GenericObject;
-  getNotificationDetailsById: (id: string) => GenericObject;
-  addNewNotification: (dataObj: GenericObject) => GenericObject;
-  updateNotificationDetailById: (
+  notificationDetailsByIdList: any;
+  getAllNotificationList: () => any;
+  getNotificationDetailsById: (id: string) => any;
+  addNewNotification: (dataObj: GenericObject) => any;
+  updateAllNotificationDetailByIdAPI: (
     id: string,
     dataObj: GenericObject
   ) => GenericObject;
-  deleteNotificationDetailById: (id: string) => GenericObject;
+  deleteAllNotificationDetailByIdAPI: (id: string) => any;
 };
