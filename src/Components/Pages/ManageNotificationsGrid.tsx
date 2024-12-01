@@ -17,7 +17,7 @@ const ManageNotificationsGrid: React.FC = () => {
   const {
     getAllNotificationList,
     allNotificationList,
-    deleteNotificationDetailById,
+    deleteAllNotificationDetailByIdAPI,
   } = useAllDataStore();
 
   const fetchData = useCallback(async () => {
@@ -58,7 +58,7 @@ const ManageNotificationsGrid: React.FC = () => {
       handleProceed: async () => {
         try {
           setShowModal(false);
-          const res: any = await deleteNotificationDetailById(id);
+          const res: any = await deleteAllNotificationDetailByIdAPI(id);
           if (res.status === "Success") {
             //toast.success(`Successfully deleted`);
             updateModalContent({

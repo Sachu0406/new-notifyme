@@ -23,7 +23,7 @@ const NotificationForm: React.FC = () => {
   const states = allStates?.map((listItem: any) => listItem.stateName);
   const {
     addNewNotification,
-    updateNotificationDetailById,
+    updateAllNotificationDetailByIdAPI,
     getNotificationDetailsById,
     notificationDetailsByIdList,
   } = useAllDataStore();
@@ -35,16 +35,17 @@ const NotificationForm: React.FC = () => {
   const [modalContent, updateModalContent] = useState<any>(null);
   const users = ["ns3122", "rs3122"];
   const [error, setError] = useState("");
-
   useEffect(() => {
     if (notificationId) {
       getNotificationDetailsById(notificationId);
     }
+  }, [notificationId]);
+
+  useEffect(() => {
     if (notificationDetailsByIdList?.length > 0) {
       setEditData(notificationDetailsByIdList);
     }
-  }, [notificationId, notificationDetailsByIdList?.length]);
-
+  }, [notificationDetailsByIdList?.length]);
   // Populate the form with editData on component load
   useEffect(() => {
     if (editData) {
@@ -64,12 +65,12 @@ const NotificationForm: React.FC = () => {
       };
       setAnswers(prePopulatedAnswers);
     }
-  }, [editData]);
-
+  }, [editData?.length, notificationDetailsByIdList?.length]);
+  console.log({ editData }, "Jaipal", notificationDetailsByIdList);
   const questions: Question[] = [
     { id: 1, question: "Notification Header", type: "input", maxLength: 22 },
     { id: 2, question: "Notification SubHeader", type: "input", maxLength: 30 },
-    { id: 3, question: "Notification Date?", type: "date" },
+    { id: 3, question: "Notification Date", type: "date" },
     { id: 4, question: "Application Start Date", type: "date" },
     { id: 5, question: "Application End Date", type: "date" },
     { id: 6, question: "Application Fee", type: "input", maxLength: 20 },
@@ -154,9 +155,13 @@ const NotificationForm: React.FC = () => {
     if (users?.includes(answers[12])) {
       try {
         const res: any = (await notificationId)
-          ? updateNotificationDetailById(notificationId || "", formattedAnswers)
+          ? updateAllNotificationDetailByIdAPI(
+              notificationId || "",
+              formattedAnswers
+            )
           : addNewNotification(formattedAnswers);
-        if (res?.status === "Success") {
+        console.log(res, "Api res");
+        if (res?.status === "Success" || (notificationId && res)) {
           handleSucceess();
         } else {
           toast.error(res?.message);

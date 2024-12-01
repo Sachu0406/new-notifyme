@@ -2,11 +2,11 @@
 import { create } from "zustand";
 import { store } from "./StoreIndex";
 import {
-  updateJobNotificationDetailByIdAPI,
-  deleteJobNotificationDetailByIdAPI,
+  deleteAllNotificationDetailByIdAPI,
   getAllNotificationAPI,
   addNewNotificationAPI,
   getAllNotificationDetailByIdAPI,
+  updateAllNotificationDetailByIdAPI,
 } from "../APIServices/Services";
 import { GenericObject } from "../Shared/ObjectModals";
 
@@ -31,11 +31,14 @@ const useAllDataStore = create<store>((set) => ({
   addNewNotification: async (dataObj: GenericObject) => {
     return await addNewNotificationAPI(dataObj);
   },
-  updateNotificationDetailById: async (id: string, dataObj: GenericObject) => {
-    return await updateJobNotificationDetailByIdAPI(id, dataObj);
+  updateAllNotificationDetailByIdAPI: async (
+    id: string,
+    dataObj: GenericObject
+  ) => {
+    return await updateAllNotificationDetailByIdAPI(id, dataObj);
   },
-  deleteNotificationDetailById: async (id: string) => {
-    return await deleteJobNotificationDetailByIdAPI(id);
+  deleteAllNotificationDetailByIdAPI: async (id: string) => {
+    return await deleteAllNotificationDetailByIdAPI(id);
   },
 }));
 
