@@ -8,11 +8,14 @@ import useAllDataStore from "../APIStore/Store";
 import { useNavigate } from "react-router-dom";
 import CommonDialogue from "../Shared/CommonDialogue";
 import { gridData } from "../Shared/staticData";
+//import { Form } from "react-bootstrap";
 
 const ManageNotificationsGrid: React.FC = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalContent, updateModalContent] = useState<any>(null);
+  //const [currUser, setCurrUser] = useState("");
+
   const [refresh, setRefresh] = useState<number>(Math.random());
   const {
     getAllNotificationList,
@@ -28,6 +31,7 @@ const ManageNotificationsGrid: React.FC = () => {
   const handleEdit = (id: string) => {
     navigate(`/editNotification/${id}`);
   };
+
   const handleDelete = async (id: string) => {
     updateModalContent({
       title: "Delete Confirmation",

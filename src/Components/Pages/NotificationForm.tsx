@@ -7,7 +7,7 @@ import PageTitle from "../Shared/PageTitle";
 import useAllDataStore from "../APIStore/Store";
 import CommonDialogue from "../Shared/CommonDialogue";
 import { useNavigate, useParams } from "react-router-dom";
-import { allStates } from "../Shared/staticData";
+import { allStates, users } from "../Shared/staticData";
 import { TransFormString } from "../Shared/StaticText";
 type Question = {
   id: number;
@@ -28,12 +28,11 @@ const NotificationForm: React.FC = () => {
     notificationDetailsByIdList,
   } = useAllDataStore();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [editData, setEditData] = useState<any>(notificationDetailsByIdList);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [previewMode, setPreviewMode] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalContent, updateModalContent] = useState<any>(null);
-  const users = ["ns3122", "rs3122"];
+
   const [error, setError] = useState("");
   useEffect(() => {
     if (notificationId) {
@@ -41,32 +40,34 @@ const NotificationForm: React.FC = () => {
     }
   }, [notificationId]);
 
+  const prePopulatedAnswers: Record<number, string> = {
+    1: notificationDetailsByIdList.notificationHeader,
+    2: notificationDetailsByIdList.notificationSubHeader,
+    3: notificationDetailsByIdList.notificationDate
+      ?.split("/")
+      ?.reverse()
+      .join("-"), // Convert to YYYY-MM-DD
+    4: notificationDetailsByIdList.applyStartDate
+      ?.split("/")
+      ?.reverse()
+      .join("-"),
+    5: notificationDetailsByIdList.applyEndDate
+      ?.split("/")
+      ?.reverse()
+      .join("-"),
+    6: notificationDetailsByIdList.applicationFee,
+    7: notificationDetailsByIdList.officialWebSite,
+    8: notificationDetailsByIdList.eligibility,
+    9: notificationDetailsByIdList.isNewNotification ? "Yes" : "No",
+    10: notificationDetailsByIdList.stateName,
+    11: notificationDetailsByIdList.notificationType,
+    12: notificationDetailsByIdList?.ownerName || "",
+  };
   useEffect(() => {
-    if (notificationDetailsByIdList?.length > 0) {
-      setEditData(notificationDetailsByIdList);
-    }
-  }, [notificationDetailsByIdList?.length]);
-  // Populate the form with editData on component load
-  useEffect(() => {
-    if (editData) {
-      const prePopulatedAnswers: Record<number, string> = {
-        1: editData.notificationHeader,
-        2: editData.notificationSubHeader,
-        3: editData.notificationDate?.split("/")?.reverse().join("-"), // Convert to YYYY-MM-DD
-        4: editData.applyStartDate?.split("/")?.reverse().join("-"),
-        5: editData.applyEndDate?.split("/")?.reverse().join("-"),
-        6: editData.applicationFee,
-        7: editData.officialWebSite,
-        8: editData.eligibility,
-        9: editData.isNewNotification ? "Yes" : "No",
-        10: editData.stateName,
-        11: editData.notificationType,
-        12: editData.ownerName || "",
-      };
+    if (notificationId) {
       setAnswers(prePopulatedAnswers);
     }
-  }, [editData?.length, notificationDetailsByIdList?.length]);
-  console.log({ editData }, "Jaipal", notificationDetailsByIdList);
+  }, [notificationDetailsByIdList?.length]);
   const questions: Question[] = [
     { id: 1, question: "Notification Header", type: "input", maxLength: 22 },
     { id: 2, question: "Notification SubHeader", type: "input", maxLength: 30 },
@@ -154,14 +155,13 @@ const NotificationForm: React.FC = () => {
     };
     if (users?.includes(answers[12])) {
       try {
-        const res: any = (await notificationId)
-          ? updateAllNotificationDetailByIdAPI(
+        const res: any = notificationId
+          ? await updateAllNotificationDetailByIdAPI(
               notificationId || "",
               formattedAnswers
             )
-          : addNewNotification(formattedAnswers);
-        console.log(res, "Api res");
-        if (res?.status === "Success" || (notificationId && res)) {
+          : await addNewNotification(formattedAnswers);
+        if (res?.status === "Success") {
           handleSucceess();
         } else {
           toast.error(res?.message);
@@ -205,7 +205,7 @@ const NotificationForm: React.FC = () => {
       handleProceed: notificationId
         ? () => navigate("/manageNotificationsData")
         : () => window.location.reload(),
-      handleClose: () => navigate("/"),
+      handleClose: () => navigate("/manageNotificationsData"),
     });
     setShowModal(true);
   };
@@ -223,6 +223,7 @@ const NotificationForm: React.FC = () => {
                 question.maxLength
               )
             }
+            autoFocus={true}
           />
         );
       case "date":
@@ -231,6 +232,7 @@ const NotificationForm: React.FC = () => {
             type="date"
             value={answers[question.id] || ""}
             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
+            autoFocus={true}
           />
         );
       case "radio":
@@ -248,6 +250,7 @@ const NotificationForm: React.FC = () => {
                   handleAnswerChange(question.id, e.target.value)
                 }
                 inline
+                autoFocus={true}
               />
             ))}
           </div>
@@ -257,6 +260,7 @@ const NotificationForm: React.FC = () => {
           <Form.Select
             value={answers[question.id] || ""}
             onChange={(e) => handleAnswerChange(question.id, e.target.value)}
+            autoFocus={true}
           >
             <option value="">Select</option>
             {question.options?.map((option) => (
@@ -319,7 +323,7 @@ const NotificationForm: React.FC = () => {
                 Prev
               </Button>
               {currentQuestionIndex < questions.length - 1 ? (
-                <Button variant="primary" onClick={handleNext}>
+                <Button variant="info" onClick={handleNext}>
                   Next
                 </Button>
               ) : (
@@ -331,7 +335,7 @@ const NotificationForm: React.FC = () => {
           </>
         ) : (
           <>
-            <h1 className="mb-4">Please Verify</h1>
+            <h3 className="mb-3">Please Verify</h3>
             <ul className="list-group">
               {questions.map((question) => (
                 <li key={question.id} className="list-group-item">
@@ -344,7 +348,7 @@ const NotificationForm: React.FC = () => {
               <Button variant="secondary" onClick={() => setPreviewMode(false)}>
                 Back to Edit
               </Button>
-              <Button variant="primary" onClick={handleSubmit}>
+              <Button variant="info" onClick={handleSubmit}>
                 Submit
               </Button>
             </div>

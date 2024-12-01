@@ -29,13 +29,15 @@ const useAllDataStore = create<store>((set) => ({
     return res;
   },
   addNewNotification: async (dataObj: GenericObject) => {
-    return await addNewNotificationAPI(dataObj);
+    const res = await addNewNotificationAPI(dataObj);
+    return res;
   },
   updateAllNotificationDetailByIdAPI: async (
     id: string,
     dataObj: GenericObject
   ) => {
-    return await updateAllNotificationDetailByIdAPI(id, dataObj);
+    const res = await updateAllNotificationDetailByIdAPI(id, dataObj);
+    return res;
   },
   deleteAllNotificationDetailByIdAPI: async (id: string) => {
     return await deleteAllNotificationDetailByIdAPI(id);

@@ -14,10 +14,14 @@ const Home = () => {
   async function fetchNotifications() {
     try {
       const res = await getAllNotificationList();
-      const newNotifications: any = res?.map((item: any) =>
-        item?.isNewNotification ? item : null
+      const allNotifications = res?.map((item: any) => ({
+        ...item,
+        id: item?._id,
+      }));
+      const newNotifications = allNotifications?.filter(
+        (item: any) => item.isNewNotification
       );
-      setAllData(res);
+      setAllData(allNotifications);
       setNewNotifyData(newNotifications);
       setPageRefresh(Math.random());
     } catch (err) {

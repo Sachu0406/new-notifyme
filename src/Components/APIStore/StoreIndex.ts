@@ -10,6 +10,6 @@ export type store = {
   updateAllNotificationDetailByIdAPI: (
     id: string,
     dataObj: GenericObject
-  ) => GenericObject;
+  ) => any;
   deleteAllNotificationDetailByIdAPI: (id: string) => any;
 };
