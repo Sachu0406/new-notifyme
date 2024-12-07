@@ -152,6 +152,7 @@ const NotificationForm: React.FC = () => {
       isNewNotification: answers[9] === "Yes",
       stateName: answers[10],
       notificationType: answers[11],
+      ownerName: answers[12],
     };
     if (users?.includes(answers[12])) {
       try {

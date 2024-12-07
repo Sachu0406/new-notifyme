@@ -1,6 +1,6 @@
-
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+
 interface pageProps {
   title: string;
   dialogueShow: boolean;
@@ -34,7 +34,7 @@ const CommonDialogue = ({
         //dialogClassName="custom-modal"
         //style={{ maxWidth: width || "" }}
       >
-        <Modal.Header>
+        <Modal.Header style={{ color: "black" }}>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{bodyContent}</Modal.Body>
@@ -45,11 +45,13 @@ const CommonDialogue = ({
               : "justify-content-end"
           }`}
         >
-          <Button variant="secondary" onClick={handleClose}>
-            {cancelText}
-          </Button>
+          {cancelText && (
+            <Button variant="secondary" onClick={handleClose}>
+              {cancelText}
+            </Button>
+          )}
           {acceptText && (
-            <Button variant="primary" onClick={handleProceed}>
+            <Button variant="info" onClick={handleProceed}>
               {acceptText}
             </Button>
           )}

@@ -4,16 +4,18 @@ import ShareButton from "../Shared/CommonShareIcon";
 import { Button } from "react-bootstrap";
 import { TransFormString } from "../Shared/StaticText";
 import { GridItem } from "../Shared/staticData";
+import { useNavigate } from "react-router-dom";
 
 interface dataSection {
   gridData: [GridItem];
 }
 
 const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
+  const navigate = useNavigate();
   const [flippedCardId, setFlippedCardId] = useState<number | string | null>(
     null
   );
-  const handleFlip = (id: number | string) => setFlippedCardId(id);
+  const handleFlip = (id: number | string) => navigate(`/Home/${id}`);
 
   const handleUnflip = () => setFlippedCardId(null);
 
@@ -55,7 +57,7 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
               <p className="fw-semibold">{item?.applyEndDate}</p>
             </div>
             <div className="d-flex justify-content-between mt-2">
-              <ShareButton />
+              <ShareButton notifyId={item?.id} />
               <Button
                 variant="primary"
                 onClick={() => handleFlip(item?.id)}

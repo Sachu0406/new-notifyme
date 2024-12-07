@@ -7,9 +7,10 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import { Button } from "react-bootstrap";
 import ShareButton from "../Shared/CommonShareIcon";
-import swiperBg from "../../assets/Images/TradeLogohd2.png";
+//import swiperBg from "../../assets/Images/TradeLogohd2.png";
 import swiperBg2 from "../../assets/Images/TradeLogohd4.png";
 import { TransFormString } from "./StaticText";
+import { useNavigate } from "react-router-dom";
 
 interface CarouselSectionProps {
   title: string;
@@ -22,17 +23,19 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
   carouselItems,
   moreInfoText,
 }) => {
+  const navigate = useNavigate();
   const [flippedCardId, setFlippedCardId] = useState<number | null>(null);
-  const [swiperInstance, setSwiperInstance] = useState<any>(null); // Manage Swiper instance
+  //const [swiperInstance, setSwiperInstance] = useState<any>(null); // Manage Swiper instance
 
   const handleFlip = (id: number) => {
-    setFlippedCardId(id);
-    swiperInstance?.autoplay.stop(); // Stop autoplay
+    navigate(`/Home/${id}`);
+    //setFlippedCardId(id);
+    //swiperInstance?.autoplay.stop(); // Stop autoplay
   };
 
   const handleUnflip = () => {
     setFlippedCardId(null);
-    swiperInstance?.autoplay.start(); // Resume autoplay
+    //swiperInstance?.autoplay.start(); // Resume autoplay
   };
 
   return (
@@ -60,7 +63,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
         loop={true}
         navigation={{ enabled: window.innerWidth > 768 }} // Enable only for larger screens
         //pagination={{ clickable: true, dynamicBullets: window.innerWidth > 768 }}
-        onSwiper={(swiper) => setSwiperInstance(swiper)} // Capture Swiper instance
+        //onSwiper={(swiper) => setSwiperInstance(swiper)} // Capture Swiper instance
         breakpoints={{
           480: { slidesPerView: 1 },
           768: { slidesPerView: 3 },
@@ -154,7 +157,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                 ) : (
                   <div
                     className={styles.front}
-                    style={{ backgroundImage: `url(${swiperBg})` }}
+                    style={{ backgroundImage: `url(${swiperBg2})` }}
                   >
                     <div>
                       <h5
@@ -187,7 +190,7 @@ const SwiperCards: React.FC<CarouselSectionProps> = ({
                       <p className="fw-semibold ">{item?.applyEndDate}</p>
                     </div>
                     <div className="d-flex justify-content-between mt-2">
-                      <ShareButton />
+                      <ShareButton notifyId={item?.id} />
                       <Button
                         variant="primary"
                         onClick={() => handleFlip(item.id)}
