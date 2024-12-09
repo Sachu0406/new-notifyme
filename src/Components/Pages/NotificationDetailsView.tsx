@@ -1,5 +1,3 @@
-import React from "react";
-
 const NotificationDetailsView = (props: any) => {
   const { listItem } = props;
   return (
