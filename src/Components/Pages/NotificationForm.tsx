@@ -9,6 +9,7 @@ import CommonDialogue from "../Shared/CommonDialogue";
 import { useNavigate, useParams } from "react-router-dom";
 import { allStates, users } from "../Shared/staticData";
 import { TransFormString } from "../Shared/StaticText";
+import axios from "axios";
 type Question = {
   id: number;
   question: string;
@@ -26,6 +27,7 @@ const NotificationForm: React.FC = () => {
     updateAllNotificationDetailByIdAPI,
     getNotificationDetailsById,
     notificationDetailsByIdList,
+    addNewRestNotification,
   } = useAllDataStore();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -61,7 +63,8 @@ const NotificationForm: React.FC = () => {
     9: notificationDetailsByIdList.isNewNotification ? "Yes" : "No",
     10: notificationDetailsByIdList.stateName,
     11: notificationDetailsByIdList.notificationType,
-    12: notificationDetailsByIdList?.ownerName || "",
+    12: notificationDetailsByIdList?.remark || "",
+    13: notificationDetailsByIdList?.ownerName || "",
   };
   useEffect(() => {
     if (notificationId) {
@@ -95,7 +98,8 @@ const NotificationForm: React.FC = () => {
       type: "dropdown",
       options: ["Job", "Admission", "Entrance"],
     },
-    { id: 12, question: "Owner Name", type: "input", maxLength: 12 },
+    { id: 12, question: "Remark", type: "input", maxLength: 200 },
+    { id: 13, question: "Owner Name", type: "input", maxLength: 12 },
   ];
 
   const handleAnswerChange = (
@@ -152,24 +156,70 @@ const NotificationForm: React.FC = () => {
       isNewNotification: answers[9] === "Yes",
       stateName: answers[10],
       notificationType: answers[11],
-      ownerName: answers[12],
+      remark: answers[12],
+      ownerName: answers[13],
     };
-    if (users?.includes(answers[12])) {
-      try {
-        const res: any = notificationId
-          ? await updateAllNotificationDetailByIdAPI(
-              notificationId || "",
-              formattedAnswers
-            )
-          : await addNewNotification(formattedAnswers);
-        if (res?.status === "Success") {
-          handleSucceess();
-        } else {
-          toast.error(res?.message);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    if (users?.includes(answers[13])) {
+      // try {
+      //   const res: any = notificationId
+      //     ? await updateAllNotificationDetailByIdAPI(
+      //         notificationId || "",
+      //         formattedAnswers
+      //       )
+      //     : await addNewNotification(formattedAnswers);
+      //   if (res?.status === "Success") {
+      //     handleSucceess();
+      //   } else {
+      //     toast.error(res?.message);
+      //   }
+      // } catch (err) {
+      //   console.log(err);
+      // }
+
+      const spredSheetData = {
+        "Notification Header": answers[1],
+        "Notification Sub Header": answers[2],
+        "Notificatiion Date": answers[3] ? formatDate(answers[3]) : null,
+        "Apply Start Date": answers[4] ? formatDate(answers[4]) : null,
+        "Apply End Date": answers[5] ? formatDate(answers[5]) : null,
+        "Application Fee": answers[6],
+        "Official Website": answers[7],
+        Eligibility: answers[8],
+        "New Notification": answers[9] === "Yes",
+        "State Name": answers[10],
+        "Notification Type": answers[11],
+        Remark: answers[12],
+        "Owner Name": answers[13],
+      };
+      axios
+        .post(
+          "https://api.sheetbest.com/sheets/8078fd1a-3d46-4f65-98e4-6ffc365fa334",
+          spredSheetData
+        )
+        .then((response) => console.log(response))
+        .catch((error) =>
+          console.error("Error saving data:", error.response || error.message)
+        );
+      // fetch(
+      //   "https://api.sheetbest.com/sheets/8078fd1a-3d46-4f65-98e4-6ffc365fa334",
+      //   {
+      //     method: "POST",
+      //     mode: "cors",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(spredSheetData),
+      //   }
+      // )
+      //   .then((r) => r.json())
+      //   .then((data) => {
+      //     // The response comes here
+      //     console.log(data);
+      //   })
+      //   .catch((error) => {
+      //     // Errors are reported there
+      //     console.log(error);
+      //   });
     } else {
       toast.error("You are not allowed!");
     }

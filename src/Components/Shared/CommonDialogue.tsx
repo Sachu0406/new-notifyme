@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
@@ -32,12 +33,12 @@ const CommonDialogue = ({
         keyboard={false}
         centered
         //dialogClassName="custom-modal"
-        //style={{ maxWidth: width || "" }}
+        //style={{ maxinline-size: width || "" }}
       >
         <Modal.Header style={{ color: "black" }}>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{bodyContent}</Modal.Body>
+        <Modal.Body style={{ color: "black" }}>{bodyContent}</Modal.Body>
         <Modal.Footer
           className={`d-flex ${
             cancelText && acceptText

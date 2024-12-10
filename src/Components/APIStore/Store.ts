@@ -7,17 +7,27 @@ import {
   addNewNotificationAPI,
   getAllNotificationDetailByIdAPI,
   updateAllNotificationDetailByIdAPI,
+  addNewNotificationRestAPI,
+  getAllNotificationRestAPI,
 } from "../APIServices/Services";
 import { GenericObject } from "../Shared/ObjectModals";
 
 const useAllDataStore = create<store>((set) => ({
   allNotificationList: [],
+  allRestNotificationList: [],
   notificationDetailsByIdList: [],
 
   getAllNotificationList: async () => {
     const res: any = await getAllNotificationAPI();
     set({
       allNotificationList: res,
+    });
+    return res;
+  },
+  getAllRestNotificationList: async () => {
+    const res: any = await getAllNotificationRestAPI();
+    set({
+      allRestNotificationList: res,
     });
     return res;
   },
@@ -30,6 +40,10 @@ const useAllDataStore = create<store>((set) => ({
   },
   addNewNotification: async (dataObj: GenericObject) => {
     const res = await addNewNotificationAPI(dataObj);
+    return res;
+  },
+  addNewRestNotification: async (dataObj: any) => {
+    const res = await addNewNotificationRestAPI(dataObj);
     return res;
   },
   updateAllNotificationDetailByIdAPI: async (
