@@ -66,6 +66,7 @@ export type GridItem = {
   applicationFee: string;
   eligibility: string;
   isNewNotification?: boolean;
+  notificationType?: string;
 };
 
 export const gridData: GridItem[] = [
