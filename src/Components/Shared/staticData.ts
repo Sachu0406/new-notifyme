@@ -1,5 +1,27 @@
-export const users = ["ns3122", "rs3122"];
+export const users = ["ns3122", "rs3122", "ad3122"];
 
+export const appDisclaimer = [
+  {
+    id: 1,
+    note: "Disclaimer",
+    info: "Information provided in this website may not always be accurate and is subject to correction.",
+  },
+  {
+    id: 2,
+    note: "Official Sources",
+    info: "Always visit the official website for complete and accurate information related to each notification.",
+  },
+  {
+    id: 3,
+    note: "Broken Links",
+    info: "If any provided link does not work, please search for the relevant details directly in your preferred browser.",
+  },
+  {
+    id: 4,
+    note: "Security Notice",
+    info: "We will never ask for card details, payment information, or any sensitive financial data.",
+  },
+];
 export const onlineOfflineMode = [
   {
     id: 1,
@@ -44,12 +66,13 @@ export type GridItem = {
   applicationFee: string;
   eligibility: string;
   isNewNotification?: boolean;
+  notificationType?: string;
 };
 
 export const gridData: GridItem[] = [
   {
     id: 1,
-    notificationHeader: "Engineering Recruitment 2024",
+    notificationHeader: "Example Notification 1",
     notificationSubHeader: "Government of XYZ",
     notificationDate: "2024-11-01",
     applyStartDate: "2024-11-05",
@@ -60,7 +83,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 2,
-    notificationHeader: "Health Department Vacancies",
+    notificationHeader: "Example Notification 2",
     notificationSubHeader: "State Health Board",
     notificationDate: "2024-10-25",
     applyStartDate: "2024-11-01",
@@ -71,7 +94,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 3,
-    notificationHeader: "Banking Sector Jobs",
+    notificationHeader: "Example Notification 3",
     notificationSubHeader: "National Bank Recruitment",
     notificationDate: "2024-10-20",
     applyStartDate: "2024-10-25",
@@ -82,7 +105,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 4,
-    notificationHeader: "Teaching Staff Openings",
+    notificationHeader: "Example Notification 4",
     notificationSubHeader: "Central Education Board",
     notificationDate: "2024-09-15",
     applyStartDate: "2024-09-20",
@@ -93,7 +116,7 @@ export const gridData: GridItem[] = [
   },
   {
     id: 5,
-    notificationHeader: "Civil Services Examination 2025",
+    notificationHeader: "Example Notification 5",
     notificationSubHeader: "Union Public Service Commission",
     notificationDate: "2024-11-10",
     applyStartDate: "2024-11-15",

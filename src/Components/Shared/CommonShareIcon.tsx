@@ -1,15 +1,19 @@
-
+import React from "react";
 import { Button } from "react-bootstrap";
 import { FaShareAlt } from "react-icons/fa";
 
-const ShareButton: React.FC = () => {
-  const handleShare = () => {
+interface ShareButtonProps {
+  notifyId: string | number;
+}
+
+const ShareButton: React.FC<ShareButtonProps> = ({ notifyId }) => {
+  const handleShare = (notifyId: string | number) => {
     const url = window.location.href;
     if (navigator.share) {
       navigator
         .share({
           title: "Check this out!",
-          url,
+          url: `${url}/${notifyId}`,
         })
         .catch((error) => console.error("Sharing failed:", error));
     } else {
@@ -20,7 +24,7 @@ const ShareButton: React.FC = () => {
   return (
     <Button
       variant="secondary"
-      onClick={handleShare}
+      onClick={() => handleShare(notifyId)}
       className="d-flex align-items-center"
     >
       <FaShareAlt className="me-1" /> Share

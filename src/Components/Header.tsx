@@ -36,9 +36,9 @@ const Header: React.FC = () => {
             <i onClick={toggleMenu}>{isDarkMode ? "Light" : "Dark"} Mode</i>
           </a>
         )}
-        <a href="#jobs">Jobs</a>
+        {/* <a href="#jobs">Jobs</a>
         <a href="#admissions">Admissions</a>
-        <a href="#entrances">Entrances</a>
+        <a href="#entrances">Entrances</a> */}
         <a
           href="https://chat.whatsapp.com/FrOPBIiJ5JZEiL4kvOjvoF"
           target="_blank"

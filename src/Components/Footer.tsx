@@ -40,6 +40,7 @@ const Footer: React.FC = () => {
         >
           Contact Us
         </a>
+        <a href="/feedback">Feedback & Suggestions</a>
       </div>
     </footer>
   );

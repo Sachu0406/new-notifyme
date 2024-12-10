@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./Components/Layout";
 import { AuthProvider } from "./AuthContext";
 //import { useLocation } from "react-router-dom";
@@ -23,7 +23,9 @@ function App() {
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="*" Component={ErrorPage} />
-        <Route path="/" Component={HomePage} />
+        <Route path="/Home" Component={HomePage} />
+        <Route path="/Home/:notificationId" Component={HomePage} />
+        <Route path="/" element={<Navigate to="/Home" replace />} />
         <Route path="/addNewNotification" Component={NotificationForm} />
         <Route
           path="/editNotification/:notificationId"
