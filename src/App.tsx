@@ -6,6 +6,7 @@ import { AuthProvider } from "./AuthContext";
 import Loader from "./Components/Shared/Loader";
 import { useLoader } from "./Components/Shared/UseLoader";
 import { ThemeProvider } from "./ThemeContext";
+import usePageTracking from "./PageTracking";
 
 const NotificationForm = lazy(
   () => import("./Components/Pages/NotificationForm")
@@ -18,7 +19,7 @@ const ManageNotificationsGrid = lazy(
 
 function App() {
   const loading = useLoader();
-
+  usePageTracking();
   const publicRoutes = (
     <Suspense fallback={<Loader />}>
       <Routes>
