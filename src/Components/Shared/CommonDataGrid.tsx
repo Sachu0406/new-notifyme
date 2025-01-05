@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import { Table, Pagination, Button, FormControl, Form } from "react-bootstrap";
 import { FaSyncAlt } from "react-icons/fa";
@@ -79,7 +80,7 @@ const CommonDataGrid: React.FC<DataGridProps> = ({
   const endRecord = Math.min(currentPage * rowsPerPage, filteredData.length);
 
   const renderPaginationItems = () => {
-    let items = [];
+    const items = [];
     const ellipsis = <Pagination.Ellipsis key="ellipsis" />;
 
     if (totalPages <= 4) {
@@ -209,7 +210,7 @@ const CommonDataGrid: React.FC<DataGridProps> = ({
             {columns.map((col, index) => (
               <th
                 key={index}
-                style={{ width: col.width || "100px", textAlign: "center" }}
+                style={{ width: col.width || "auto", textAlign: "center" }}
               >
                 {col.headerName}
               </th>

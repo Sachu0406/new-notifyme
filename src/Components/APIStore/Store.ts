@@ -15,7 +15,11 @@ const useAllDataStore = create<store>((set) => ({
   notificationDetailsByIdList: [],
 
   getAllNotificationList: async () => {
-    const res: any = await getAllNotificationAPI();
+    let res: any = await getAllNotificationAPI();
+    res = res?.map((listItem) => ({
+      ...listItem,
+      newNotify: listItem?.isNewNotification ? "Yes" : "No",
+    }));
     set({
       allNotificationList: res,
     });

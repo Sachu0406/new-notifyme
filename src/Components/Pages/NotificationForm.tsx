@@ -61,7 +61,7 @@ const NotificationForm: React.FC = () => {
     9: notificationDetailsByIdList.isNewNotification ? "Yes" : "No",
     10: notificationDetailsByIdList.stateName,
     11: notificationDetailsByIdList.notificationType,
-    12: notificationDetailsByIdList?.ownerName || "",
+    12: notificationDetailsByIdList?.remarks || "",
   };
   useEffect(() => {
     if (notificationId) {
@@ -95,7 +95,8 @@ const NotificationForm: React.FC = () => {
       type: "dropdown",
       options: ["Job", "Admission", "Entrance"],
     },
-    { id: 12, question: "Owner Name", type: "input", maxLength: 12 },
+    { id: 12, question: "Remarks", type: "input" },
+    { id: 13, question: "Owner Name", type: "input", maxLength: 12 },
   ];
 
   const handleAnswerChange = (
@@ -152,9 +153,10 @@ const NotificationForm: React.FC = () => {
       isNewNotification: answers[9] === "Yes",
       stateName: answers[10],
       notificationType: answers[11],
-      ownerName: answers[12],
+      remarks: answers[12],
+      ownerName: answers[13],
     };
-    if (users?.includes(answers[12])) {
+    if (users?.includes(answers[13])) {
       try {
         const res: any = notificationId
           ? await updateAllNotificationDetailByIdAPI(

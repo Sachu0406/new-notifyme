@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../assets/Module/AllNotifications.module.scss";
 import ShareButton from "../Shared/CommonShareIcon";
 import { Button, Form } from "react-bootstrap";
 import { TransFormString } from "../Shared/StaticText";
 import { GridItem } from "../Shared/staticData";
 import { useNavigate } from "react-router-dom";
+import BlinkingText from "../Shared/BlinkText";
 
 interface dataSection {
   gridData: GridItem[];
@@ -39,6 +40,16 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
     setFilteredData(filtered);
   };
 
+  useEffect(() => {
+    if (
+      (selectedType && selectedType !== "") ||
+      (searchTerm && searchTerm !== "")
+    ) {
+      handleSearch();
+    } else {
+      handleClearFilters();
+    }
+  }, [selectedType, searchTerm]);
   const handleClearFilters = () => {
     setSearchTerm("");
     setSelectedType("");
@@ -68,9 +79,9 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
           <option value="Admission">Admission</option>
           <option value="Entrance">Entrance</option>
         </Form.Select>
-        <Button variant="primary" onClick={handleSearch} className="me-2">
+        {/* <Button variant="primary" onClick={handleSearch} className="me-2">
           Search
-        </Button>
+        </Button> */}
         {gridData.length !== filteredData?.length && (
           <Button variant="outline-secondary" onClick={handleClearFilters}>
             Clear
@@ -99,6 +110,7 @@ const NotificationCards: React.FC<dataSection> = ({ gridData }) => {
                     }}
                   >
                     {item?.notificationHeader}
+                    {item?.isNewNotification && <BlinkingText text="New" />}
                   </h5>
                   <h6 className="fw-bold d-flex justify-content-center ">
                     {item?.notificationSubHeader}
