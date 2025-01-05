@@ -8,7 +8,7 @@ interface BlinkingTextProps {
 
 const BlinkingText: React.FC<BlinkingTextProps> = ({
   text,
-  interval = 500,
+  interval = 1000,
 }) => {
   return (
     <div>

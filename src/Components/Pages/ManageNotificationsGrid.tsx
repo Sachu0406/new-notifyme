@@ -87,7 +87,7 @@ const ManageNotificationsGrid: React.FC = () => {
   useEffect(() => {
     getAllNotificationList();
   }, []);
-  const columns = [
+  const columns: any = [
     {
       field: "notificationHeader",
       headerName: "Notification Header",
@@ -187,7 +187,7 @@ const ManageNotificationsGrid: React.FC = () => {
         try {
           setShowModal(false);
           let editObject = allNotificationList?.find(
-            (listItem) => listItem?._id === id
+            (listItem: any) => listItem?._id === id
           );
           editObject = { ...editObject, isNewNotification: false };
           const res: any = await updateAllNotificationDetailByIdAPI(
@@ -233,16 +233,16 @@ const ManageNotificationsGrid: React.FC = () => {
             </button>
             <button
               onClick={() => handleDelete(row._id)}
-              className="btn btn-danger"
+              className="btn btn-danger me-3"
             >
               {TransFormString.delete}
             </button>
             {row?.isNewNotification && (
               <button
                 onClick={() => handleMarkInActive(row._id)}
-                className="btn btn-danger"
+                className="btn btn-info"
               >
-                Mark Inactive
+                Inactive
               </button>
             )}
           </div>
@@ -263,7 +263,7 @@ const ManageNotificationsGrid: React.FC = () => {
           </button>
         </div>
         <CommonDataGrid
-          data={allNotificationList || gridData}
+          data={allNotificationList?.reverse() || gridData}
           rowsPerPage={10}
           columns={columns}
           fetchData={fetchData}
